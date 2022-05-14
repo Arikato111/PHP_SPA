@@ -1,35 +1,29 @@
 <?php
 require("./package.php");
 
-function RootContent()
-{
-    if (isset($_POST["page"])) {
-        // set page //
-        switch($_POST["page"]){
-            case "home":
-              return HomePage();
-            case "about":
-                return AboutPage();
-            default: return '<div>Not Found Page</div>';
-        }
-        // set page //
-    } else {
-        return HomePage();
-        // first page to show //
+function RootContent(){
+    // set page //
+    switch(CheckPath()){ // check path
+        case "/about": 
+            return AboutPage();
+        case '/':
+            return HomePage();
+        default: 
+        header('location: /'); // if not found page redirect to path '/'
     }
 }
 
 
-// for user to choose page on click
-// tittle is text to show | $id is id of form | page_value is use to switch case
-function subMitForm($title, $page_value, $id)
-{
-
-    return '
-    <form id="' . $id . '" action="" method="post">
-        <input type="hidden" name="page" value="' . $page_value . '">
-        <span onclick="document.getElementById(\'' . $id . '\').submit()">' . $title . '</span>
-    </form>
-    ';
+// func for check path to use switch case
+function CheckPath(){
+    $link = "$_SERVER[REQUEST_URI]";
+    $real_string ="";
+    for($i=0;$i < strlen($link);$i++){
+        if($link[$i] == '?'){
+         break;
+        } else {
+            $real_string = $real_string . $link[$i];
+        }
+    }    
+    return $real_string;
 }
-// so you can write with yoursalf | add more | this just example

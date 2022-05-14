@@ -1,0 +1,11 @@
+a {
+    text-decoration: none;
+    color: blue;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 20px;
+}
+
+a:hover {
+    transform: scale(1.2);
+}
