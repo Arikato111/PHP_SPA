@@ -15,7 +15,7 @@ require("./path.php");
 </head>
 
 <body>
-    <div class="container">
+    <div>
         <?php echo RootContent(); ?>
     </div>
     <script src="script.js"></script>
