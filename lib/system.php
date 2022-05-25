@@ -19,8 +19,7 @@ function CheckPath()
     return ["path" => $real_string, "params" => $param];
 }
 
-function Route($path, $callbakFunc)
-{
+function Route($path, $callbakFunc){
     $getPath = CheckPath();
     if ($getPath["path"] == $path || $getPath["params"] == $path || $path == "*") {
         return $callbakFunc();
@@ -50,20 +49,26 @@ function getParams()
         }
     }
     $params = explode('/', $real_string);
-    if(!empty($params)){
-        return $params[sizeof($params)-1];
+    if (!empty($params)) {
+        return $params[sizeof($params) - 1];
     }
 }
 
-function import($dir){
+function import($dir)
+{
     $getDir = glob($dir);
     if (!empty($getDir)) {
         foreach ($getDir as $file) {
-            if(str_contains(substr($file, 1), '.')){
+            if (str_contains(substr($file, 1), '.')) {
                 require_once("$file");
             } else {
                 import("$file/*");
             }
         }
     }
+}
+
+function title($title)
+{
+    return '<script>document.title = "' . $title . '"</script>';
 }
