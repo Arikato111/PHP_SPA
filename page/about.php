@@ -1,6 +1,6 @@
 <?php
 function AboutPage(){
-    $head = '<div><a href="home">home</a><hr><a href="/about?mode=hot">hot</a> | 
+    $head = '<div><a href="/">home</a><hr><a href="/about?mode=hot">hot</a> | 
     <a href="/about?mode=new">new</a> | <a href="about">default</a><hr></div>';
     
     if(isset($_GET['mode'])){

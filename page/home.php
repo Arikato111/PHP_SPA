@@ -1,6 +1,5 @@
 <?php
-function HomePage()
-{
+function HomePage(){
     return '<a href="about">about</a>
     <hr>
     <h2>this is home page</h2>
