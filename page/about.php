@@ -1,7 +1,7 @@
 <?php
 function AboutPage(){
     // $head just keep header of page
-    $head = '<div><a href="/">home</a><hr><a href="/about?mode=params">params</a> | <a href="/about?mode=new">new</a> | <a href="about">default</a><hr></div>';
+    $head = '<div><a href="/about?mode=params">params</a> | <a href="/about?mode=new">new</a> | <a href="about">default</a><hr></div>';
     
     if(isset($_GET['mode'])){ // check mode value
         if($_GET['mode'] == 'new'){
