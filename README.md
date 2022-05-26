@@ -16,3 +16,4 @@ if use MySQL Database , Must use $GLOBALS['conn'] instead of $conn
 
 if want to change title, use title() 
 
+dont keep it inside folder , it should be inside htdocs
