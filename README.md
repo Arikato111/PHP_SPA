@@ -1,3 +1,25 @@
+# PHP_SPA
+# this is starter template
+# is work on single page and try to use function for page 
+
+ - when use if you need to create new file in page folder don't forgot  
+   to use import on package.php, should not use require or include for  
+   folder* , and set path in path.php with Route() and use inside [] of
+              SwitchPath
+ 
+ - Route() need path and callback function to return page function
+
+- don't let Page function be emty or null
+
+- getParams() will get the last params
+
+- if use MySQL Database , Must use $GLOBALS['conn'] instead of $conn
+
+ - if want to change title, use title() 
+
+- dont keep it inside folder , it should be inside htdocs
+
+- can use function outside SwicthPath to show in all page
 
 ## การเขียน PHP แบบ รวมศูนย์ ( SPA )
 
@@ -33,25 +55,4 @@
 - ภาพอย่างง่ายที่อธิบายถึงการทำงาน
 ![enter image description here](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/284201920_384550966969568_3371549898208564415_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=730e14&_nc_ohc=_OtNFuIvKiQAX8jWgYw&_nc_ht=video.fubp1-1.fna&oh=00_AT9NWpFp3rs8qByWswAJJCWHwZJbDqr4_4j_0o-87qDvPQ&oe=6294E363)
 
-# PHP_SPA
-# this is starter template
-# is work on single page and try to use function for page 
 
- - when use if you need to create new file in page folder don't forgot  
-   to use import on package.php, should not use require or include for  
-   folder* , and set path in path.php with Route() and use inside [] of
-              SwitchPath
- 
- - Route() need path and callback function to return page function
-
-- don't let Page function be emty or null
-
-- getParams() will get the last params
-
-- if use MySQL Database , Must use $GLOBALS['conn'] instead of $conn
-
- - if want to change title, use title() 
-
-- dont keep it inside folder , it should be inside htdocs
-
-- can use function outside SwicthPath to show in all page
