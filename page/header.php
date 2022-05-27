@@ -1,8 +1,10 @@
 <?php
 function headerSub(){
-    return '<div>
+    return <<<HTML
+            <div>
                 <a href="/">home</a>
                 <a href="/about">about</a>
             </div>
-            <hr>';
+            <hr>
+        HTML;
 }

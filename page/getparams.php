@@ -4,7 +4,8 @@ function GetLearnParams(){
 
     if(!$value) $value = "emty"; // check emty value
 
-    return title("about | " . $value) 
-        . "value is " . $value
-        ;
+    return title("About | $value") . 
+    <<<HTML
+        <h1>value = $value</h1>
+    HTML;
 }
