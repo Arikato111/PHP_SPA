@@ -53,3 +53,6 @@
 
 - เมื่อจะกำหนด title ควรใช้ title() และเขียน title ภายในเช่น title(“Home”) หรือตามภาพตัวอย่าง ซึ่งจะ return string ที่เป็น script ที่ใช้คำสั่ง javascript เพื่อเปลี่ยน title และไม่ควรใช้ช้ำซ้อน
 
+- ภาพอย่างง่ายที่อธิบายถึงการทำงาน
+![enter image description here](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/284201920_384550966969568_3371549898208564415_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=730e14&_nc_ohc=_OtNFuIvKiQAX8jWgYw&_nc_ht=video.fubp1-1.fna&oh=00_AT9NWpFp3rs8qByWswAJJCWHwZJbDqr4_4j_0o-87qDvPQ&oe=6294E363)
+
