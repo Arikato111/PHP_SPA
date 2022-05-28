@@ -44,7 +44,8 @@
 
 ![การเขียนในรูปแบบ function](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/284306690_384648356959829_6978952492087751309_n.png?_nc_cat=106&ccb=1-7&_nc_sid=730e14&_nc_ohc=JTw3d4Xf-bAAX-8C_H-&_nc_ht=video.fubp1-1.fna&oh=00_AT9e6d7dAWNm_axSf5XclTaTYFzVN3F4Yshc0-CkoVo0CQ&oe=6295E3AF)
 
-- หากต้องการเชื่อมฐานข้อมูลควรใช้ $GLOBALS['con'] เพื่อให้สามารถใช้ใน function ต่างๆ โดยที่ตัว funcation ไม่ต้องรับค่า
+
+- หากต้องการเชื่อมฐานข้อมูลควรใช้ $GLOBALS['con'] เพื่อให้สามารถใช้ใน function ต่างๆ โดยที่ตัว function ไม่ต้องรับค่า
 
 - การ import จะไม่ใช้ require หรือ include แต่จะใช้ import ซึ่งสามารถ import มาทั้ง folder ได้ เช่น import(‘./page/*’); ซึ่งควร import แต่ละไฟล์บน package.php เท่านั้น และระวังอย่า import ไฟล์หรือ folder ซ้ำ
 
