@@ -31,12 +31,14 @@
 ![enter image description here](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/284551698_384648273626504_1609400707294192179_n.png?_nc_cat=106&ccb=1-7&_nc_sid=730e14&_nc_ohc=pwDeTxlOs3cAX_2vnRJ&_nc_ht=video.fubp1-1.fna&oh=00_AT8PjnA5Xo7Emvv9If8beQSA0wnKvJ0lbM-ICtP0spiCIg&oe=6295D40C)
 
  - ใน RootContent function ตามภาพด้านล่างจะเป็นการ return ค่าเพื่อไปแสดงผลยังหน้า index ซึ่งภายในจะมี headerSub function และ SwitchPath
+
+![อาจเป็นรูปภาพของ กำลังนั่ง](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/284486730_384648380293160_6865668386188902373_n.png?_nc_cat=111&ccb=1-7&_nc_sid=730e14&_nc_ohc=jkSXNjer7-8AX9SmY6f&_nc_ht=video.fubp1-1.fna&oh=00_AT_VhG7QMRCMM4-R6YS_JFD3gM6TTNLw50hlMZQpF_FUFQ&oe=6295C8A6)
+
 - สำหรับ headerSub จะเป็นการเขียนนอก SwitchPath เพื่อให้ปรากฏไปยังทุกหน้า
 - ส่วน SwitchPath และ Route ที่อยู่ภายในนั้นจะเป็นการกำหนด path และ function ของแต่ละหน้า เช่น '/about' ก็ให้ return function ที่เป็นหน้า about ทั้งนี้สามารถกำหนด path ได้ตามต้องการ ส่วน '*' ตามในภาพนั้นจะเป็นการกำหนดให้ตรงกับทุก path เพื่อดัก error กรณีผู้ใช้เข้าไม่ถูก path
 - จากภาพด่านล่าง จะเห็นได้ว่าใน Route มีการใส่ '/about/:' ตัว : จะเป็นการบอกว่ายังมี path ต่อจาก about อีก ซึ่งจะสามารถเป็นอะไรก็ได้ เช่น /about/hello หรือ /about/world หรืออะไรก็ตามที่มีต่อก็จะตรงทั้งหมด
-![อาจเป็นรูปภาพของ กำลังนั่ง](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/284486730_384648380293160_6865668386188902373_n.png?_nc_cat=111&ccb=1-7&_nc_sid=730e14&_nc_ohc=jkSXNjer7-8AX9SmY6f&_nc_ht=video.fubp1-1.fna&oh=00_AT_VhG7QMRCMM4-R6YS_JFD3gM6TTNLw50hlMZQpF_FUFQ&oe=6295C8A6)
 
-- getParams function จะเป็นการเรียกใช้เพื่อได้ค่า path ลำดับสุดท้าย เช่น /about/value ก็จะได้ value มา 
+- getParams function จะเป็นการเรียกใช้เพื่อได้ค่า path ลำดับสุดท้าย เช่น /about/value ก็จะได้ value มา และสามารถกำหนดตำแหน่งได้ โดยเริ่มนับจากตำแหน่งที่ 0 เช่น getParams(0) ก็จะได้ about
 
 - การเขียนแต่ละหน้าแบบ function และนำไปทำงานร่วมกับ Route แต่ละหน้าจะเปลี่ยนรูปแบบมาเป็นการเขียน function และ return ค่าแทนการเขียนแยกเป็นหน้าๆ ตามก่อน และยังสามารถทำงานประมวลผลใน function ได้ตามปกติ อย่างเช่น AboutPage() ที่เป็นหน้า about ที่สามารถเขียนประมวลผลใน function และสามารถเขียน function แยกย่อยได้อีก
 
