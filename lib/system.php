@@ -34,10 +34,13 @@ function SwitchPath($Route){
     }
 }
 
-function getParams()
+function getParams($position = -1)
 {
-    $params = explode('/', getPath());
+    $params = explode('/',substr(getPath(), 1));
     if (!empty($params)) {
+        if($position > -1){
+        return $params[$position];
+        }
         return $params[sizeof($params) - 1];
     }
 }
