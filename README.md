@@ -21,7 +21,7 @@
 
 - can use function outside SwicthPath to show in all page
 
-## การเขียน PHP แบบ รวมศูนย์ ( SPA )
+## การเขียน PHP แบบ รวมศูนย์ ( SPA ) ( แต่ก็ยังรันบนเชิร์ฟเวอร์อยู่ดี )
 
  
 
