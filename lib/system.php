@@ -1,33 +1,32 @@
 <?php
-
 // func for check path to use switch case
-function CheckPath()
-{
+function getPath(){
     $link = "$_SERVER[REQUEST_URI]";
-    $param = "";
-    $real_string = "/";
+    $real_path = "/";
     for ($i = 1; $i < strlen($link); $i++) {
         if ($link[$i] == '?') {
             break;
-        } else if ($link[$i] == '/') {
-            $param = $real_string . '/:';
-            $real_string = $real_string . $link[$i];
         } else {
-            $real_string = $real_string . $link[$i];
+            $real_path = $real_path . $link[$i];
         }
     }
-    return ["path" => $real_string, "params" => $param];
+    return $real_path;
 }
 
 function Route($path, $callbakFunc){
-    $getPath = CheckPath();
-    if ($getPath["path"] == $path || $getPath["params"] == $path || $path == "*") {
-        return $callbakFunc();
+    if($path == '*') return $callbakFunc();
+
+    $getPath = explode('/', getPath());
+    $Route_path = explode('/', $path);
+    
+    if(sizeof($getPath) != sizeof($Route_path)) return;
+    for($i=0;$i< sizeof($Route_path); $i++){
+        if($getPath[$i] != $Route_path[$i] && $Route_path[$i] != ':') return;
     }
+    return $callbakFunc();
 }
 
-function SwitchPath($Route)
-{
+function SwitchPath($Route){
     foreach ($Route as $value) {
         if ($value) {
             return $value;
@@ -37,18 +36,7 @@ function SwitchPath($Route)
 
 function getParams()
 {
-    $link = "$_SERVER[REQUEST_URI]";
-    $real_string = "/";
-    for ($i = 1; $i < strlen($link); $i++) {
-        if ($link[$i] == '?') {
-            break;
-        } else if ($link[$i] == '/') {
-            $real_string = $real_string . $link[$i];
-        } else {
-            $real_string = $real_string . $link[$i];
-        }
-    }
-    $params = explode('/', $real_string);
+    $params = explode('/', getPath());
     if (!empty($params)) {
         return $params[sizeof($params) - 1];
     }
@@ -68,7 +56,6 @@ function import($dir)
     }
 }
 
-function title($title)
-{
+function title($title){
     return '<script>document.title = "' . $title . '"</script>';
 }
