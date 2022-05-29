@@ -1,4 +1,4 @@
 <?php
-// import page or others file php to path.php //
-import('./pages/*');
+// import page or others file at only here //
+import('./src/*');
 ?>
