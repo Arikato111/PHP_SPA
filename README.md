@@ -61,4 +61,5 @@
 - ภาพอย่างง่ายที่อธิบายถึงการทำงาน
 ![enter image description here](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/284201920_384550966969568_3371549898208564415_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=730e14&_nc_ohc=_OtNFuIvKiQAX8jWgYw&_nc_ht=video.fubp1-1.fna&oh=00_AT9NWpFp3rs8qByWswAJJCWHwZJbDqr4_4j_0o-87qDvPQ&oe=6294E363)
 
-
+- Tip! หากต้องการเขียน function สำหรับใช้งานเฉพาะใน function page ให้เขียนตามภาพด้านล่าง
+![enter image description here](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/284921350_386554703435861_6912134901672407422_n.png?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=Arn23hot07wAX96apmU&tn=tUFQlMH_65maGc9_&_nc_ht=video.fubp1-1.fna&oh=00_AT8uVSiqUOqYWbsCfn8GiU7yN9xoDXwhU3VXYtUWObecXw&oe=629A0E4D)
