@@ -1,27 +1,36 @@
 # PHP_SPA
-# this is starter template
-# is work on single page and try to use function for page 
-[ภาษาไทย](#user-content-%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%82%E0%B8%B5%E0%B8%A2%E0%B8%99-php-%E0%B9%81%E0%B8%9A%E0%B8%9A-%E0%B8%A3%E0%B8%A7%E0%B8%A1%E0%B8%A8%E0%B8%B9%E0%B8%99%E0%B8%A2%E0%B9%8C--spa---%E0%B9%81%E0%B8%95%E0%B9%88%E0%B8%81%E0%B9%87%E0%B8%A2%E0%B8%B1%E0%B8%87%E0%B8%A3%E0%B8%B1%E0%B8%99%E0%B8%9A%E0%B8%99%E0%B9%80%E0%B8%8A%E0%B8%B4%E0%B8%A3%E0%B9%8C%E0%B8%9F%E0%B9%80%E0%B8%A7%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%AD%E0%B8%A2%E0%B8%B9%E0%B9%88%E0%B8%94%E0%B8%B5-)
+# Starter template
+[PHP_SPA คืออะไร](#user-content-%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%82%E0%B8%B5%E0%B8%A2%E0%B8%99-php-%E0%B9%81%E0%B8%9A%E0%B8%9A-%E0%B8%A3%E0%B8%A7%E0%B8%A1%E0%B8%A8%E0%B8%B9%E0%B8%99%E0%B8%A2%E0%B9%8C--spa---%E0%B9%81%E0%B8%95%E0%B9%88%E0%B8%81%E0%B9%87%E0%B8%A2%E0%B8%B1%E0%B8%87%E0%B8%A3%E0%B8%B1%E0%B8%99%E0%B8%9A%E0%B8%99%E0%B9%80%E0%B8%8A%E0%B8%B4%E0%B8%A3%E0%B9%8C%E0%B8%9F%E0%B9%80%E0%B8%A7%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%AD%E0%B8%A2%E0%B8%B9%E0%B9%88%E0%B8%94%E0%B8%B5-)
 
-[Get started](#user-content-get-started)
- - when use if you need to create new file in page folder don't forgot  
-   to use import on package.php, should not use require or include for  
-   folder* , and set path in path.php with Route() and use inside [] of
-              SwitchPath
- 
- - Route() need path and callback function to return page function
+## Get started
+**ติดตั้ง**
+- ติดตั้งผ่านคำสั่ง php , โดยคัดลอกโค้ดด้านล่างไปวางไว้ที่ index.php แล้วเข้าหน้า index.php ผ่านเบราว์เซอร์ รอสักครู่ เป็นอันเสร็จสิ้น
+```
+$module  =  file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/installer/index.php');
+file_put_contents('index.php', $module);
+header('Location: /');
+```
+---
+- ติดตั้งผ่าน git
+ใช้คำสั่ง git clone เพื่อดาวน์โหลด template 
+`git clone https://github.com/Arikato111/PHP_SPA.git`
+หลังจากนั้นจะได้โฟลเดอร์ **PHP_SPA** มา ให้ย้ายไฟล๋ทั้งหมดในโฟลเดอร์นั้นไปยัง htdocs ( ในกรณีใช้ Xampp ) โดยไม่ต้องสร้างโฟลเดอร์เพิ่มใน htdocs และใช้งานตามปกติ
 
-- don't let Page function be emty or null
+---
+- ติดตั้งผ่าน zip file ดาวน์โหลด zip file 
+click [ดาวน์โหลด](https://github.com/Arikato111/PHP_SPA/archive/refs/heads/Release.zip) จากนั้นจะได้ไฟล๋ **PHP_SPA-Release.zip** ในไฟล๋ zip จะมีโฟลเดอร๋ชื่อเดียวกันอยู่ ให้แตกไฟล๋นำโฟลเดอร๋นั้นออกมา แล้วเข้าไปยังโฟลเดอร๋นั้น 
+ย่ายไฟล๋ทั้งหมดไปที่ htdocs ( ในกรณีใช้ Xampp ) โดยไม่ต้องสร้างโฟลเดอร๋เพิ่มใน htdocs และใช้งานตามปกติ
 
-- getParams() will get the last params
+---
+- ใช้งานผ่านลิงก๋โดยไม่ต้องโหลดติดตั้งไฟล๋
+นำโค้ดด้านล่างไปวางไว้บนสุดในหน้า index.php จากนั้นจะสามารถใช้คำสั่ง SwitchPath Route getPath getParams import title ได้ตามปกติ แม้ตัวโปรแกรมที่ใช้เขียนโค้ดจะขึ้น error แต่ก็ยังสามารถใช้งานได้ตามปกติ
+- อย่างไรก็ตาม เป็นวิธีที่ไม่แนะนำ
+```
+$module  =  file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/Release/modules/wisit-single-page.php');
 
-- if use MySQL Database , Must use $GLOBALS['conn'] instead of $conn
+eval(substr($module,  6));
+```
 
- - if want to change title, use title() 
-
-- dont keep it inside folder , it should be inside htdocs
-
-- can use function outside SwicthPath to show in all page
 
 ## การเขียน PHP แบบ รวมศูนย์ ( SPA ) ( แต่ก็ยังรันบนเชิร์ฟเวอร์อยู่ดี )
 
@@ -66,32 +75,3 @@
 - Tip! หากต้องการเขียน function สำหรับใช้งานเฉพาะใน function page ให้เขียนตามภาพด้านล่าง
 ![enter image description here](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/284921350_386554703435861_6912134901672407422_n.png?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=Arn23hot07wAX96apmU&tn=tUFQlMH_65maGc9_&_nc_ht=video.fubp1-1.fna&oh=00_AT8uVSiqUOqYWbsCfn8GiU7yN9xoDXwhU3VXYtUWObecXw&oe=629A0E4D)
 
-
-## Get started
-**ติดตั้ง**
-- ติดตั้งผ่านคำสั่ง php , โดยคัดลอกโค้ดด้านล่างไปวางไว้ที่ index.php แล้วเข้าหน้า index.php ผ่านเบราว์เซอร์ รอสักครู่ เป็นอันเสร็จสิ้น
-```
-$module  =  file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/installer/index.php');
-file_put_contents('index.php', $module);
-header('Location: /');
-```
----
-- ติดตั้งผ่าน git
-ใช้คำสั่ง git clone เพื่อดาวน์โหลด template 
-`git clone https://github.com/Arikato111/PHP_SPA.git`
-หลังจากนั้นจะได้โฟลเดอร์ **PHP_SPA** มา ให้ย้ายไฟล๋ทั้งหมดในโฟลเดอร์นั้นไปยัง htdocs ( ในกรณีใช้ Xampp ) โดยไม่ต้องสร้างโฟลเดอร์เพิ่มใน htdocs และใช้งานตามปกติ
-
----
-- ติดตั้งผ่าน zip file ดาวน์โหลด zip file 
-click [ดาวน์โหลด](https://github.com/Arikato111/PHP_SPA/archive/refs/heads/Release.zip) จากนั้นจะได้ไฟล๋ **PHP_SPA-Release.zip** ในไฟล๋ zip จะมีโฟลเดอร๋ชื่อเดียวกันอยู่ ให้แตกไฟล๋นำโฟลเดอร๋นั้นออกมา แล้วเข้าไปยังโฟลเดอร๋นั้น 
-ย่ายไฟล๋ทั้งหมดไปที่ htdocs ( ในกรณีใช้ Xampp ) โดยไม่ต้องสร้างโฟลเดอร๋เพิ่มใน htdocs และใช้งานตามปกติ
-
----
-- ใช้งานผ่านลิงก๋โดยไม่ต้องโหลดติดตั้งไฟล๋
-นำโค้ดด้านล่างไปวางไว้บนสุดในหน้า index.php จากนั้นจะสามารถใช้คำสั่ง SwitchPath Route getPath getParams import title ได้ตามปกติ แม้ตัวโปรแกรมที่ใช้เขียนโค้ดจะขึ้น error แต่ก็ยังสามารถใช้งานได้ตามปกติ
-- อย่างไรก็ตาม เป็นวิธีที่ไม่แนะนำ
-```
-$module  =  file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/Release/modules/wisit-single-page.php');
-
-eval(substr($module,  6));
-```
