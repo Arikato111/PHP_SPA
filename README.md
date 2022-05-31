@@ -75,15 +75,18 @@ $module  =  file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_
 file_put_contents('index.php', $module);
 header('Location: /');
 ```
-- git
-⬇️ใช้คำสั่ง git clone เพื่อดาวน์โหลด template 
+---
+- ติดตั้งผ่าน git
+ใช้คำสั่ง git clone เพื่อดาวน์โหลด template 
 `git clone https://github.com/Arikato111/PHP_SPA.git`
 หลังจากนั้นจะได้โฟลเดอร์ **PHP_SPA** มา ให้ย้ายไฟล๋ทั้งหมดในโฟลเดอร์นั้นไปยัง htdocs ( ในกรณีใช้ Xampp ) โดยไม่ต้องสร้างโฟลเดอร์เพิ่มใน htdocs และใช้งานตามปกติ
 
-- ดาวน์โหลด zip file 
+---
+- ติดตั้งผ่าน zip file ดาวน์โหลด zip file 
 click [ดาวน์โหลด](https://github.com/Arikato111/PHP_SPA/archive/refs/heads/Release.zip) จากนั้นจะได้ไฟล๋ **PHP_SPA-Release.zip** ในไฟล๋ zip จะมีโฟลเดอร๋ชื่อเดียวกันอยู่ ให้แตกไฟล๋นำโฟลเดอร๋นั้นออกมา แล้วเข้าไปยังโฟลเดอร๋นั้น 
 ย่ายไฟล๋ทั้งหมดไปที่ htdocs ( ในกรณีใช้ Xampp ) โดยไม่ต้องสร้างโฟลเดอร๋เพิ่มใน htdocs และใช้งานตามปกติ
 
+---
 - ใช้งานผ่านลิงก๋โดยไม่ต้องโหลดติดตั้งไฟล๋
 นำโค้ดด้านล่างไปวางไว้บนสุดในหน้า index.php จากนั้นจะสามารถใช้คำสั่ง SwitchPath Route getPath getParams import title ได้ตามปกติ แม้ตัวโปรแกรมที่ใช้เขียนโค้ดจะขึ้น error แต่ก็ยังสามารถใช้งานได้ตามปกติ
 - อย่างไรก็ตาม เป็นวิธีที่ไม่แนะนำ
