@@ -1,8 +1,9 @@
 # PHP_SPA
 # Starter template
+## Get started
+
 [PHP_SPA คืออะไร](#user-content-%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%82%E0%B8%B5%E0%B8%A2%E0%B8%99-php-%E0%B9%81%E0%B8%9A%E0%B8%9A-%E0%B8%A3%E0%B8%A7%E0%B8%A1%E0%B8%A8%E0%B8%B9%E0%B8%99%E0%B8%A2%E0%B9%8C--spa---%E0%B9%81%E0%B8%95%E0%B9%88%E0%B8%81%E0%B9%87%E0%B8%A2%E0%B8%B1%E0%B8%87%E0%B8%A3%E0%B8%B1%E0%B8%99%E0%B8%9A%E0%B8%99%E0%B9%80%E0%B8%8A%E0%B8%B4%E0%B8%A3%E0%B9%8C%E0%B8%9F%E0%B9%80%E0%B8%A7%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%AD%E0%B8%A2%E0%B8%B9%E0%B9%88%E0%B8%94%E0%B8%B5-)
 
-## Get started
 **ติดตั้ง**
 - ติดตั้งผ่านคำสั่ง php , โดยคัดลอกโค้ดด้านล่างไปวางไว้ที่ index.php แล้วเข้าหน้า index.php ผ่านเบราว์เซอร์ รอสักครู่ เป็นอันเสร็จสิ้น
 ```
