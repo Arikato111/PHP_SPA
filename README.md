@@ -68,7 +68,13 @@
 
 
 ## Get started
-**ดาวน์โหลด**
+**ติดตั้ง**
+- ติดตั้งผ่านคำสั่ง php , โดยคัดลอกโค้ดด้านล่างไปวางไว้ที่ index.php แล้วเข้าหน้า index.php ผ่านเบราว์เซอร์ รอสักครู่ เป็นอันเสร็จสิ้น
+```
+$module  =  file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/installer/index.php');
+file_put_contents('index.php', $module);
+header('Location: /');
+```
 - git
 ⬇️ใช้คำสั่ง git clone เพื่อดาวน์โหลด template 
 `git clone https://github.com/Arikato111/PHP_SPA.git`
