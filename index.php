@@ -25,7 +25,7 @@ mkdir('static');
          "file_link"=>"https://raw.githubusercontent.com/Arikato111/PHP_SPA/Release/static/script.js",
      ],
      [
-         "file_name"=>"src/style.css",
+         "file_name"=>"static/style.css",
          "file_link"=>"https://raw.githubusercontent.com/Arikato111/PHP_SPA/Release/static/style.css",
      ],
      [
