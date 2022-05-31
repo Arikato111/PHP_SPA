@@ -63,3 +63,24 @@
 
 - Tip! หากต้องการเขียน function สำหรับใช้งานเฉพาะใน function page ให้เขียนตามภาพด้านล่าง
 ![enter image description here](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/284921350_386554703435861_6912134901672407422_n.png?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=Arn23hot07wAX96apmU&tn=tUFQlMH_65maGc9_&_nc_ht=video.fubp1-1.fna&oh=00_AT8uVSiqUOqYWbsCfn8GiU7yN9xoDXwhU3VXYtUWObecXw&oe=629A0E4D)
+
+
+## Get started
+**ดาวน์โหลด**
+- git
+⬇️ใช้คำสั่ง git clone เพื่อดาวน์โหลด template 
+`git clone https://github.com/Arikato111/PHP_SPA.git`
+หลังจากนั้นจะได้โฟลเดอร์ **PHP_SPA** มา ให้ย้ายไฟล๋ทั้งหมดในโฟลเดอร์นั้นไปยัง htdocs ( ในกรณีใช้ Xampp ) โดยไม่ต้องสร้างโฟลเดอร์เพิ่มใน htdocs 
+
+- ดาวน์โหลด zip file 
+click [ดาวน์โหลด](https://github.com/Arikato111/PHP_SPA/archive/refs/heads/Release.zip) จากนั้นจะได้ไฟล๋ **PHP_SPA-Release.zip** ในไฟล๋ zip จะมีโฟลเดอร๋ชื่อเดียวกันอยู่ ให้แตกไฟล๋นำโฟลเดอร๋นั้นออกมา แล้วเข้าไปยังโฟลเดอร๋นั้น 
+ย่ายไฟล๋ทั้งหมดไปที่ htdocs ( ในกรณีใช้ Xampp ) โดยไม่ต้องสร้างโฟลเดอร๋เพิ่มใน htdocs
+
+- ใช้งานผ่านลิงก๋โดยไม่ต้องโหลดติดตั้งไฟล๋
+นำโค้ดด้านล่างไปวางไว้บนสุดในหน้า index.php จากนั้นจะสามารถใช้คำสั่ง SwitchPath Route getPath getParams import title ได้ตามปกติ แม้ตัวโปรแกรมที่ใช้เขียนโค้ดจะขึ้น error แต่ก็ยังสามารถใช้งานได้ตามปกติ
+- อย่างไรก็ตาม เป็นวิธีที่ไม่แนะนำ
+```
+$module  =  file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/Release/modules/wisit-single-page.php');
+
+eval(substr($module,  6));
+```
