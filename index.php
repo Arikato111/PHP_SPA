@@ -1,48 +1,18 @@
 <?php
-mkdir('modules');
-mkdir('src');
-mkdir('static');
+ini_set('user_agent', '3lcieh2bon3032a');
+$json =  file_get_contents("https://api.github.com/repos/Arikato111/PHP_SPA/git/trees/Release?recursive=1");
+$jo = json_decode($json);
 
- $package = [
-     [
-         "file_name"=>"modules/LICENSE",
-         "file_link"=>"https://raw.githubusercontent.com/Arikato111/PHP_SPA/Release/modules/LICENSE",
-     ],
-     [
-         "file_name"=>"modules/wisit-single-page.php",
-         "file_link"=>"https://raw.githubusercontent.com/Arikato111/PHP_SPA/Release/modules/wisit-single-page.php",
-     ],
-     [
-         "file_name"=>"src/home.php",
-         "file_link"=>"https://raw.githubusercontent.com/Arikato111/PHP_SPA/Release/src/home.php",
-     ],
-     [
-         "file_name"=>"src/main.php",
-         "file_link"=>"https://raw.githubusercontent.com/Arikato111/PHP_SPA/Release/src/main.php",
-     ],
-     [
-         "file_name"=>"static/script.js",
-         "file_link"=>"https://raw.githubusercontent.com/Arikato111/PHP_SPA/Release/static/script.js",
-     ],
-     [
-         "file_name"=>"static/style.css",
-         "file_link"=>"https://raw.githubusercontent.com/Arikato111/PHP_SPA/Release/static/style.css",
-     ],
-     [
-         "file_name"=>".htaccess",
-         "file_link"=>"https://raw.githubusercontent.com/Arikato111/PHP_SPA/Release/.htaccess",
-     ],
-     [
-         "file_name"=>"package.php",
-         "file_link"=>"https://raw.githubusercontent.com/Arikato111/PHP_SPA/Release/package.php",
-     ],
-     [
-         "file_name"=>"index.php",
-         "file_link"=>"https://raw.githubusercontent.com/Arikato111/PHP_SPA/Release/index.php",
-     ]
-];
+$tree = $jo->tree;
 
-foreach($package as $file){
-    $module  = file_get_contents($file['file_link']);
-    file_put_contents($file['file_name'], $module);
+foreach($tree as $value){
+    if($value->mode == "100644"){
+        $file = file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/Release/' . $value->path);
+        file_put_contents($value->path, $file);
+    } else if($value->mode == "040000"){
+        mkdir($value->path);
+    } else {
+        echo "Not know mode";
+        exit;
+    }
 }
