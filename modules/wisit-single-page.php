@@ -55,7 +55,7 @@ function import($dir)
     $getDir = glob($dir);
     if (!empty($getDir)) {
         foreach ($getDir as $file) {
-            if (str_contains(substr($file, 1), '.')) {
+            if (strpos(substr($file, 1), '.') !== false) {
                 require_once("$file");
             } else {
                 import("$file/*");
