@@ -16,3 +16,5 @@ foreach($tree as $value){
         exit;
     }
 }
+
+header("Location: /");
