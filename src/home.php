@@ -1,6 +1,8 @@
 <?php
-function HomePage() {
-    return title("Home") .
+function Home() {
+    // use title to change title 
+    // and String Concatenation with your content by .
+    return title("Home") . 
         <<<HTML
         <div style="text-align: center;margin-top:10px;">
             <div style="font-size:30px;">Welcome to PHP Single page </div>
@@ -9,7 +11,6 @@ function HomePage() {
                 <ul style="list-style-type: square;">
                     <li>SwitchPath</li>
                     <li>Route </li>
-                    <li>import</li>
                     <li>getParams</li>
                     <li>getPath </li>
                     <li>title</li>

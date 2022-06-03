@@ -18,8 +18,8 @@ function getPath(){
     return $real_path;
 }
 
-function Route($path, $callbakFunc){
-    if($path == '*') return $callbakFunc();
+function Route($path, $dir){
+    if($path == '*') return $dir;
 
     $getPath = explode('/', getPath());
     $Route_path = explode('/', $path);
@@ -28,13 +28,16 @@ function Route($path, $callbakFunc){
     for($i=0;$i< sizeof($Route_path); $i++){
         if($getPath[$i] != $Route_path[$i] && $Route_path[$i] != ':') return;
     }
-    return $callbakFunc();
+    return $dir;
 }
 
 function SwitchPath($Route){
     foreach ($Route as $value) {
         if ($value) {
-            return $value;
+            require($value . ".php"); // new import file
+            $value = explode('/', $value); // new get function name of function page
+            $value = $value[sizeof($value) -1]; // new get function name
+            return eval("return \$value();"); // new use eval to retrun function
         }
     }
 }
@@ -47,20 +50,6 @@ function getParams($position = -1)
         return str_replace("%20", " ", $params[$position]);
         }
         return str_replace("%20", " ", $params[sizeof($params) - 1]);
-    }
-}
-
-function import($dir)
-{
-    $getDir = glob($dir);
-    if (!empty($getDir)) {
-        foreach ($getDir as $file) {
-            if (strpos(substr($file, 1), '.') !== false) {
-                require_once("$file");
-            } else {
-                import("$file/*");
-            }
-        }
     }
 }
 
