@@ -1,5 +1,3 @@
-```
-$module  =  file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/installer/index.php');
-file_put_contents('index.php', $module);
-header('Location: /');
-```
+## นี่คือสำหรับการติดตั้งผ่านโค้ด php
+
+ดูข้อมูลเพิ่มเติมได้ที่ [Release version](https://github.com/Arikato111/PHP_SPA#readme)
