@@ -38,7 +38,7 @@ function SwitchPath(...$Switch){
             require_once($file . ".php"); // new import file
             $get_route = explode('/', $file); // new get function name of function page
             $get_route = $get_route[sizeof($get_route) -1]; // new get function name
-            eval('$content = $get_route();'); // new use eval to retrun function
+            $content = $get_route();
             if($content) return $content;
 
         }
