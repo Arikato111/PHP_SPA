@@ -37,7 +37,7 @@ function SwitchPath($Route){
             require_once($value . ".php"); // new import file
             $value = explode('/', $value); // new get function name of function page
             $value = $value[sizeof($value) -1]; // new get function name
-            eval('$content = $value();'); // new use eval to retrun function
+            $content = $value(); // new use eval to retrun function
             if($content) return $content;
         }
     }
