@@ -34,10 +34,11 @@ function Route($path, $dir){
 function SwitchPath($Route){
     foreach ($Route as $value) {
         if ($value) {
-            require($value . ".php"); // new import file
+            require_once($value . ".php"); // new import file
             $value = explode('/', $value); // new get function name of function page
             $value = $value[sizeof($value) -1]; // new get function name
-            return eval("return \$value();"); // new use eval to retrun function
+            eval('$content = $value();'); // new use eval to retrun function
+            if($content) return $content;
         }
     }
 }
