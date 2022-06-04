@@ -1,13 +1,15 @@
-# PHP_SPA
+# PHP_SPA ( Simple version )
 # Starter template
 ## Get started
 
 [PHP_SPA คืออะไร](#user-content-%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%82%E0%B8%B5%E0%B8%A2%E0%B8%99-php-%E0%B9%81%E0%B8%9A%E0%B8%9A-%E0%B8%A3%E0%B8%A7%E0%B8%A1%E0%B8%A8%E0%B8%B9%E0%B8%99%E0%B8%A2%E0%B9%8C--spa---%E0%B9%81%E0%B8%95%E0%B9%88%E0%B8%81%E0%B9%87%E0%B8%A2%E0%B8%B1%E0%B8%87%E0%B8%A3%E0%B8%B1%E0%B8%99%E0%B8%9A%E0%B8%99%E0%B9%80%E0%B8%8A%E0%B8%B4%E0%B8%A3%E0%B9%8C%E0%B8%9F%E0%B9%80%E0%B8%A7%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%AD%E0%B8%A2%E0%B8%B9%E0%B9%88%E0%B8%94%E0%B8%B5-)
 
+[Release version](https://github.com/Arikato111/PHP_SPA#readme)
+
 **ติดตั้ง**
 - ติดตั้งผ่านคำสั่ง php , โดยคัดลอกโค้ดด้านล่างไปวางไว้ที่ index.php แล้วเข้าหน้า index.php ผ่านเบราว์เซอร์ รอสักครู่ เป็นอันเสร็จสิ้น
 ```
-$module  =  file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/installer/index.php');
+$module  =  file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/installer/installer_simple.php');
 file_put_contents('index.php', $module);
 header('Location: /');
 ```
@@ -15,7 +17,7 @@ header('Location: /');
 - ติดตั้งผ่าน git
 ใช้คำสั่ง git clone เพื่อดาวน์โหลด template 
 `git clone https://github.com/Arikato111/PHP_SPA.git`
-หลังจากนั้นจะได้โฟลเดอร์ **PHP_SPA** มา ให้ย้ายไฟล์ทั้งหมดในโฟลเดอร์นั้นไปยัง htdocs ( ในกรณีใช้ Xampp ) โดยไม่ต้องสร้างโฟลเดอร์เพิ่มใน htdocs และใช้งานตามปกติ
+หลังจากนั้นจะได้โฟลเดอร์ **PHP_SPA** มา ให้ย้ายไฟล์ทั้งหมดในโฟลเดอร์นั้นไปยัง htdocs ( ในกรณีใช้ Xampp ) โดยไม่ต้องสร้างโฟลเดอร์เพิ่มใน htdocs จากนั้นทำการเปลี่ยน branch ไปที่ origin/simple และใช้งานตามปกติ
 
 ---
 - ติดตั้งผ่าน zip file ดาวน์โหลด zip file 
@@ -26,7 +28,7 @@ click [ดาวน์โหลด](https://github.com/Arikato111/PHP_SPA/archiv
 - ใช้งานผ่านลิงก์โดยไม่ต้องโหลดติดตั้งไฟล์
 นำโค้ดด้านล่างไปวางไว้บนสุดในหน้า index.php จากนั้นจะสามารถใช้คำสั่ง SwitchPath Route getPath getParams import title ได้ตามปกติ แม้ตัวโปรแกรมที่ใช้เขียนโค้ดจะขึ้น error แต่ก็ยังสามารถใช้งานได้ตามปกติ อย่างไรก็ตาม เป็นวิธีที่ไม่แนะนำ
 ```
-$module  =  file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/Release/modules/wisit-single-page.php');
+$module  =  file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/simple/modules/wisit-single-page.php');
 
 eval(substr($module,  6));
 ```
@@ -36,6 +38,8 @@ eval(substr($module,  6));
  
 ## นี่เป็น Starter template สำหรับการเริ่มต้น
 [ติดตั้ง](#user-content-get-started)
+
+- **#นี่เป็น Simple version ที่แยกมาจาก Release เพื่อเน้นไปที่การใช้งานง่ายเป็นหลัก**
 
 - จะเปลี่ยนการเขียนเป็นในรูปแบบ function แทนการเขียนแยกเป็นหน้าๆ ตามภาพด้านล่าง
 ![enter image description here](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/284551698_384648273626504_1609400707294192179_n.png?_nc_cat=106&ccb=1-7&_nc_sid=730e14&_nc_ohc=pwDeTxlOs3cAX_2vnRJ&_nc_ht=video.fubp1-1.fna&oh=00_AT8PjnA5Xo7Emvv9If8beQSA0wnKvJ0lbM-ICtP0spiCIg&oe=6295D40C)
