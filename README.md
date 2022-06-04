@@ -6,6 +6,8 @@
 
 ไปที่ [Faster version](https://github.com/Arikato111/PHP_SPA/tree/faster#readme) หากต้องการเน้นประสิทธิภาพความเร็วโดยเฉพาะ
 
+ไปที่ [Simple version](https://github.com/Arikato111/PHP_SPA/tree/simple#readme) หากต้องการการใช้งานง่ายเป็นหลัก
+
 **ติดตั้ง**
 - ติดตั้งผ่านคำสั่ง php , โดยคัดลอกโค้ดด้านล่างไปวางไว้ที่ index.php แล้วเข้าหน้า index.php ผ่านเบราว์เซอร์ รอสักครู่ เป็นอันเสร็จสิ้น
 ```
