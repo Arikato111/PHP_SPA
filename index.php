@@ -1,7 +1,7 @@
 <?php
 session_start();
 // Don't Delete or Change
-require('./modules/wisit-single-page.php');
+require('./modules/wisit-single-page/wisit-single-page.php');
 require("./src/Main.php");
 ?>
 <!DOCTYPE html>
