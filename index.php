@@ -1,8 +1,7 @@
 <?php
 session_start();
-// Don't Delete or Change
-require('./modules/wisit-single-page/wisit-single-page.php');
-require("./src/Main.php");
+require('./package.php'); // require package 
+require("./src/Main.php"); // require Main to use Main function and push content to page
 ?>
 <!DOCTYPE html>
 <html lang="en">
