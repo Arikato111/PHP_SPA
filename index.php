@@ -16,5 +16,5 @@ foreach($tree as $value){
         exit;
     }
 }
-
+unlink('README.md');
 header("Location: /");
