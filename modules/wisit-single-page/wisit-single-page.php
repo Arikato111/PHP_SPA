@@ -8,7 +8,8 @@
 function getPath(){
     $link = "$_SERVER[REQUEST_URI]";
     $real_path = "/";
-    for ($i = 1; $i < strlen($link); $i++) {
+    $link_len = strlen($link);
+    for ($i = 1; $i < $link_len; $i++) {
         if ($link[$i] == '?') {
             break;
         } else {
