@@ -52,7 +52,7 @@ eval(substr($module,  6));
 - ส่วน SwitchPath และ Route ที่อยู่ภายในนั้นจะเป็นการกำหนด path และ function ของแต่ละหน้า เช่น '/about' ก็ให้ return function ที่เป็นหน้า about ทั้งนี้สามารถกำหนด path ได้ตามต้องการ ส่วน '*' ตามในภาพนั้นจะเป็นการกำหนดให้ตรงกับทุก path เพื่อดัก error กรณีผู้ใช้เข้าไม่ถูก path
 - Route ต้องใส่ path และ directory ของ Page function โดยไม่ต้องใส่นามสกุลของไฟล์ ( .php )
 
-![enter image description here](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/285822954_389177159840282_4358641054589664898_n.png?_nc_cat=102&ccb=1-7&_nc_sid=dbeb18&_nc_ohc=OE-8vAWeDKEAX_J0ERH&_nc_ht=video.fubp1-1.fna&oh=00_AT_tjcxRkszbbObKYCXQJxzEJlUWtWd0K0Mz6vrJw_SQmw&oe=629FAB71)
+![enter image description here](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/285822954_389177159840282_4358641054589664898_n.png?_nc_cat=102&ccb=1-7&_nc_sid=dbeb18&_nc_ohc=LIfjwucLLj8AX9yURnY&_nc_ht=video.fubp1-1.fna&oh=00_AT9mYIZpG5pa590G2I5NOEOTUqYTupXGQcg4DzD_zgJNQg&oe=62A98EB1)
 - จากภาพด้านบน จะเห็นได้ว่าใน Route มีการใส่ '/about/:' ตัว : จะเป็นการบอกว่า path ในตำแหน่งนั้นจะสามารถเป็นอะไรก็ได้ เช่น /about/hello หรือ /about/world หรืออะไรก็ตามที่มีต่อก็จะตรงทั้งหมด ชึ่งสามารถเขียนซ้อนกันได้เช่น /:/: ก็จะเป็นการอนุญาตให้ path ในสองตำแหน่งนั้นเป็นอะไรก็ได้
 
 - getParams function จะเป็นการเรียกใช้เพื่อได้ค่า path ลำดับสุดท้าย เช่น /about/value ก็จะได้ value มา และสามารถกำหนดตำแหน่งได้ โดยเริ่มนับจากตำแหน่งที่ 0 เช่น getParams(0) ก็จะได้ about
@@ -71,4 +71,4 @@ eval(substr($module,  6));
 ![enter image description here](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/285766996_389190946505570_154817679611289759_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=730e14&_nc_ohc=pX2dOit_f6MAX_eZBwn&_nc_ht=video.fubp1-1.fna&oh=00_AT_dxT0syDvlB6_z-c3cT7A4c6TgQnQwWppN-MHZx2Qfmw&oe=629FD480)
 
 - Tip! หากต้องการเขียน function สำหรับใช้งานเฉพาะใน function page ให้เขียนตามภาพด้านล่าง
-![อาจเป็นรูปภาพของ กำลังนั่ง](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/284921350_386554703435861_6912134901672407422_n.png?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=m353nNF9-2gAX9EOw0X&tn=tUFQlMH_65maGc9_&_nc_ht=video.fubp1-1.fna&oh=00_AT9w4SY7TrhhinH6dccjayTJNpOF0bjtRx9vPzI-Hh1JUA&oe=629FFD0D)
+![อาจเป็นรูปภาพของ กำลังนั่ง](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/284921350_386554703435861_6912134901672407422_n.png?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=m4N-eD21gq4AX87nmLr&tn=tUFQlMH_65maGc9_&_nc_ht=video.fubp1-1.fna&oh=00_AT8pmZvGjPoY7anmLzBcbh9ga2O_OpdTF_f2-E18Sx-oLQ&oe=62A9E04D)
