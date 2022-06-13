@@ -42,17 +42,17 @@ eval(substr($module,  6));
 [ติดตั้ง](#user-content-get-started)
 
 - จะเปลี่ยนการเขียนเป็นในรูปแบบ function แทนการเขียนแยกเป็นหน้าๆ ตามภาพด้านล่าง และต้องตั้งชื่อ function ให้ตรงกับชื่อไฟล์เพื่อทำงานร่วมกับ Route, SwitchPath
-![Page Function](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/285375163_389169656507699_8902516487686966315_n.png?_nc_cat=104&ccb=1-7&_nc_sid=730e14&_nc_ohc=SBI_jLWQu0sAX-Y4Z7b&_nc_ht=video.fubp1-1.fna&oh=00_AT-u0OUFgEB3rY9V4es1-iUHHEaBjUWJ1KJsZgs4fFXE2g&oe=629EC2C5)
+![Page Function](https://firebasestorage.googleapis.com/v0/b/basic-kong.appspot.com/o/images%2F1.png?alt=media&token=9363c111-23fb-45c5-b4c4-7431619d9eb1)
 
  - ใน Main function ตามภาพด้านล่างจะเป็นการ return ค่าเพื่อไปแสดงผลยังหน้า index ซึ่งภายในจะมี SwitchPath และ Route
 
-![อาจเป็นรูปภาพของ กำลังนั่ง](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/285473366_389169629841035_1969473450733964415_n.png?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=Q8b3JQdaR54AX9zzc7e&_nc_ht=video.fubp1-1.fna&oh=00_AT8GRTsqFPQH_R0ae9ncQJqK65Ue7nf91Dke_B_O8daJug&oe=629E4C66)
+![SwitchPath ex.](https://firebasestorage.googleapis.com/v0/b/basic-kong.appspot.com/o/images%2F2.png?alt=media&token=84947773-ef7e-406d-a41f-4fffb92607a7)
 
 
 - ส่วน SwitchPath และ Route ที่อยู่ภายในนั้นจะเป็นการกำหนด path และ function ของแต่ละหน้า เช่น '/about' ก็ให้ return function ที่เป็นหน้า about ทั้งนี้สามารถกำหนด path ได้ตามต้องการ ส่วน '*' ตามในภาพนั้นจะเป็นการกำหนดให้ตรงกับทุก path เพื่อดัก error กรณีผู้ใช้เข้าไม่ถูก path
 - Route ต้องใส่ path และ directory ของ Page function โดยไม่ต้องใส่นามสกุลของไฟล์ ( .php )
 
-![enter image description here](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/285822954_389177159840282_4358641054589664898_n.png?_nc_cat=102&ccb=1-7&_nc_sid=dbeb18&_nc_ohc=LIfjwucLLj8AX9yURnY&_nc_ht=video.fubp1-1.fna&oh=00_AT9mYIZpG5pa590G2I5NOEOTUqYTupXGQcg4DzD_zgJNQg&oe=62A98EB1)
+![SwitchPath and Dynamic path ex.](https://firebasestorage.googleapis.com/v0/b/basic-kong.appspot.com/o/images%2F68747470733a2f2f766964656f2e66756270312d312e666e612e666263646e2e6e65742f762f7433392e33303830382d362f3238353832323935345f3338393137373135393834303238325f343335383634313035343538393636343839385f6e2e706e673f5.png?alt=media&token=2ce7db86-ae8f-4a32-b0e3-4ae35ed8b16b)
 - จากภาพด้านบน จะเห็นได้ว่าใน Route มีการใส่ '/about/:' ตัว : จะเป็นการบอกว่า path ในตำแหน่งนั้นจะสามารถเป็นอะไรก็ได้ เช่น /about/hello หรือ /about/world หรืออะไรก็ตามที่มีต่อก็จะตรงทั้งหมด ชึ่งสามารถเขียนซ้อนกันได้เช่น /:/: ก็จะเป็นการอนุญาตให้ path ในสองตำแหน่งนั้นเป็นอะไรก็ได้
 
 - getParams function จะเป็นการเรียกใช้เพื่อได้ค่า path ลำดับสุดท้าย เช่น /about/value ก็จะได้ value มา และสามารถกำหนดตำแหน่งได้ โดยเริ่มนับจากตำแหน่งที่ 0 เช่น getParams(0) ก็จะได้ about
@@ -68,7 +68,7 @@ eval(substr($module,  6));
 - เมื่อจะกำหนด title ควรใช้ title() และเขียน title ภายในเช่น title(“Home”) หรือตามภาพตัวอย่าง ซึ่งจะ return string ที่เป็น script ที่ใช้คำสั่ง javascript ดังนั้นต้องใช้ . เพื่อต่อ string เข้ากับส่วนโค้ด html เพื่อเปลี่ยน title และไม่ควรใช้ช้ำซ้อน
 
 - ภาพอย่างง่ายที่อธิบายถึงการทำงาน
-![enter image description here](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/285766996_389190946505570_154817679611289759_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=730e14&_nc_ohc=pX2dOit_f6MAX_eZBwn&_nc_ht=video.fubp1-1.fna&oh=00_AT_dxT0syDvlB6_z-c3cT7A4c6TgQnQwWppN-MHZx2Qfmw&oe=629FD480)
+![ภาพอธิบายการทำงานอย่างง่าย](https://firebasestorage.googleapis.com/v0/b/basic-kong.appspot.com/o/images%2F68747470733a2f2f766964656f2e66756270312d312e666e612e666263646e2e6e65742f762f7433392e33303830382d362f3238353736363939365f3338393139303934363530353537305f3135343831373637393631313238393735395f6e2e6a70673f5f6.jpg?alt=media&token=2a161fb3-3faf-4a19-ab59-d421c05072be)
 
 - Tip! หากต้องการเขียน function สำหรับใช้งานเฉพาะใน function page ให้เขียนตามภาพด้านล่าง
-![อาจเป็นรูปภาพของ กำลังนั่ง](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/284921350_386554703435861_6912134901672407422_n.png?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=m4N-eD21gq4AX87nmLr&tn=tUFQlMH_65maGc9_&_nc_ht=video.fubp1-1.fna&oh=00_AT8pmZvGjPoY7anmLzBcbh9ga2O_OpdTF_f2-E18Sx-oLQ&oe=62A9E04D)
+![Writing function inside Page function](https://firebasestorage.googleapis.com/v0/b/basic-kong.appspot.com/o/images%2F68747470733a2f2f766964656f2e66756270312d312e666e612e666263646e2e6e65742f762f7433392e33303830382d362f3238343932313335305f3338363535343730333433353836315f363931323133343930313637323430373432325f6e2e706e673f5.png?alt=media&token=01892d8e-e7d9-4621-aac4-6f45777ed733)
