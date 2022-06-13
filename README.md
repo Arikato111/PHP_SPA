@@ -43,12 +43,12 @@ eval(substr($module,  6));
 - **#นี่เป็น faster version ที่แยกมาจาก Release เพื่อเน้นไปที่ความเร็วโดยเฉพาะ**
 - จะเปลี่ยนการเขียนเป็นในรูปแบบ function แทนการเขียนแยกเป็นหน้าๆ ตามภาพด้านล่าง 
 - **#สำคัญ** ต้องตั้งชื่อ function ให้ตรงกับชื่อไฟล์เพื่อทำงานร่วมกับ SwitchPath เช่น ภาพด้านล่างที่มี Page function ชื่อ **Home** ชื่อไฟล์ก็ต้องเป็น **Home.php**
-![Page Function](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/285375163_389169656507699_8902516487686966315_n.png?_nc_cat=104&ccb=1-7&_nc_sid=730e14&_nc_ohc=SBI_jLWQu0sAX-Y4Z7b&_nc_ht=video.fubp1-1.fna&oh=00_AT-u0OUFgEB3rY9V4es1-iUHHEaBjUWJ1KJsZgs4fFXE2g&oe=629EC2C5)
+![Page Function](https://firebasestorage.googleapis.com/v0/b/basic-kong.appspot.com/o/images%2F1.png?alt=media&token=9363c111-23fb-45c5-b4c4-7431619d9eb1)
 
  - ใน Main function ตามภาพด้านล่างจะเป็นการ return ค่าเพื่อไปแสดงผลยังหน้า index ซึ่งภายในจะมี SwitchPath
  -  **#ใน faster version จะเปลี่ยนมาเป็นการเขียนแบบ Array** โดยในตำแหน่งที่ 0 จะใส่ path ที่ต้องการกำหนด และ ตำแหน่งที่ 1 จะใส่ที่อยู่ของไฟล์ที่มีการเขียน Page function นั้นๆ ลงไป โดยไม่ต้องใส่นามสกุลของไฟล์ ( .php ) ตามภาพด้านล่าง
 
-![อาจเป็นรูปภาพของ กำลังนั่ง](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/285864338_389445636480101_1496152032221999317_n.png?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=48z0wlxb2nEAX9jZq1i&tn=tUFQlMH_65maGc9_&_nc_ht=video.fubp1-1.fna&oh=00_AT_ApGnzYfdNwWD6Cn9_0-IRAg1m9vENmpM7hysJ4lZq7g&oe=629EF455)
+![SwitchPath ex.](https://firebasestorage.googleapis.com/v0/b/basic-kong.appspot.com/o/faster%2F2.png?alt=media&token=f905a321-8f44-425e-be2b-e3f1f879a196)
 
 
 - SwitchPathฯ ที่อยู่ภายในนั้นจะเป็นการกำหนด path และ function ของแต่ละหน้า เช่น '/about' ก็ให้ return function ที่เป็นหน้า about ทั้งนี้สามารถกำหนด path ได้ตามต้องการ ส่วน '*' ตามในภาพนั้นจะเป็นการกำหนดให้ตรงกับทุก path เพื่อดัก error กรณีผู้ใช้เข้าไม่ถูก path
@@ -69,7 +69,7 @@ eval(substr($module,  6));
 - เมื่อจะกำหนด title ควรใช้ title() และเขียน title ภายในเช่น title(“Home”)  ซึ่งจะ return string ที่เป็น script ที่ใช้คำสั่ง javascript ดังนั้นต้องใช้ . เพื่อต่อ string เข้ากับส่วนโค้ด html เพื่อเปลี่ยน title และไม่ควรใช้ช้ำซ้อน
 
 - ภาพอย่างง่ายที่อธิบายถึงการทำงาน
-![enter image description here](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/285766996_389190946505570_154817679611289759_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=730e14&_nc_ohc=pX2dOit_f6MAX_eZBwn&_nc_ht=video.fubp1-1.fna&oh=00_AT_dxT0syDvlB6_z-c3cT7A4c6TgQnQwWppN-MHZx2Qfmw&oe=629FD480)
+![enter image description here](https://firebasestorage.googleapis.com/v0/b/basic-kong.appspot.com/o/images%2F68747470733a2f2f766964656f2e66756270312d312e666e612e666263646e2e6e65742f762f7433392e33303830382d362f3238353736363939365f3338393139303934363530353537305f3135343831373637393631313238393735395f6e2e6a70673f5f6.jpg?alt=media&token=2a161fb3-3faf-4a19-ab59-d421c05072be)
 
 - Tip! หากต้องการเขียน function สำหรับใช้งานเฉพาะใน function page ให้เขียนตามภาพด้านล่าง
-![อาจเป็นรูปภาพของ กำลังนั่ง](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/284921350_386554703435861_6912134901672407422_n.png?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=m353nNF9-2gAX9EOw0X&tn=tUFQlMH_65maGc9_&_nc_ht=video.fubp1-1.fna&oh=00_AT9w4SY7TrhhinH6dccjayTJNpOF0bjtRx9vPzI-Hh1JUA&oe=629FFD0D)
+![Writing function inside function](https://firebasestorage.googleapis.com/v0/b/basic-kong.appspot.com/o/images%2F68747470733a2f2f766964656f2e66756270312d312e666e612e666263646e2e6e65742f762f7433392e33303830382d362f3238343932313335305f3338363535343730333433353836315f363931323133343930313637323430373432325f6e2e706e673f5.png?alt=media&token=01892d8e-e7d9-4621-aac4-6f45777ed733)
