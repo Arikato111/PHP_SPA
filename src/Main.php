@@ -10,6 +10,6 @@ function Main() {
         // with faster version you must input array 
         // in array must has path and directory 
         ['/', './src/Home'], 
-        ['*', './src/notFound'],
+        ['*', './src/NotFound'],
     );
 }
