@@ -8,6 +8,6 @@ function Main() {
     // and String Concatenation with SwitchPath by .
     return SwitchPath([
         Route('/', './src/Home'), // Route need path and directory of page function
-        Route('*', './src/notFound'),
+        Route('*', './src/NotFound'),
     ]);
 }
