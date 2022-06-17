@@ -1,80 +1,201 @@
-# PHP_SPA ( Simple version )
-# Starter template
-## Get started
 
-[PHP_SPA คืออะไร](#user-content-%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%82%E0%B8%B5%E0%B8%A2%E0%B8%99-php-%E0%B9%81%E0%B8%9A%E0%B8%9A-%E0%B8%A3%E0%B8%A7%E0%B8%A1%E0%B8%A8%E0%B8%B9%E0%B8%99%E0%B8%A2%E0%B9%8C--spa---%E0%B9%81%E0%B8%95%E0%B9%88%E0%B8%81%E0%B9%87%E0%B8%A2%E0%B8%B1%E0%B8%87%E0%B8%A3%E0%B8%B1%E0%B8%99%E0%B8%9A%E0%B8%99%E0%B9%80%E0%B8%8A%E0%B8%B4%E0%B8%A3%E0%B9%8C%E0%B8%9F%E0%B9%80%E0%B8%A7%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%AD%E0%B8%A2%E0%B8%B9%E0%B9%88%E0%B8%94%E0%B8%B5-)
-
-[Release version](https://github.com/Arikato111/PHP_SPA#readme)
-
-**ติดตั้ง**
-- ติดตั้งผ่านคำสั่ง php , โดยคัดลอกโค้ดด้านล่างไปวางไว้ที่ index.php แล้วเข้าหน้า index.php ผ่านเบราว์เซอร์ รอสักครู่ เป็นอันเสร็จสิ้น
-```
-$module  =  file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/installer/installer_simple.php');
-file_put_contents('index.php', $module);
-header('Location: /');
-```
----
-- ติดตั้งผ่าน git
-ใช้คำสั่ง git clone เพื่อดาวน์โหลด template 
-`git clone https://github.com/Arikato111/PHP_SPA.git`
-หลังจากนั้นจะได้โฟลเดอร์ **PHP_SPA** มา ให้ย้ายไฟล์ทั้งหมดในโฟลเดอร์นั้นไปยัง htdocs ( ในกรณีใช้ Xampp ) โดยไม่ต้องสร้างโฟลเดอร์เพิ่มใน htdocs จากนั้นทำการเปลี่ยน branch ไปที่ origin/simple และใช้งานตามปกติ
-
----
-- ติดตั้งผ่าน zip file ดาวน์โหลด zip file 
-click [ดาวน์โหลด](https://github.com/Arikato111/PHP_SPA/archive/refs/heads/Release.zip) จากนั้นจะได้ไฟล๋ **PHP_SPA-Release.zip** ในไฟล์ zip จะมีโฟลเดอร์ชื่อเดียวกันอยู่ ให้แตกไฟล์นำโฟลเดอร์นั้นออกมา แล้วเข้าไปยังโฟลเดอร์นั้น 
-ย้ายไฟล์ทั้งหมดไปที่ htdocs ( ในกรณีใช้ Xampp ) โดยไม่ต้องสร้างโฟลเดอร๋เพิ่มใน htdocs และใช้งานตามปกติ
-
----
-- ใช้งานผ่านลิงก์โดยไม่ต้องโหลดติดตั้งไฟล์
-นำโค้ดด้านล่างไปวางไว้บนสุดในหน้า index.php จากนั้นจะสามารถใช้คำสั่ง SwitchPath Route getPath getParams import title ได้ตามปกติ แม้ตัวโปรแกรมที่ใช้เขียนโค้ดจะขึ้น error แต่ก็ยังสามารถใช้งานได้ตามปกติ อย่างไรก็ตาม เป็นวิธีที่ไม่แนะนำ
-```
-$module  =  file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/simple/modules/wisit-single-page.php');
-
-eval(substr($module,  6));
-```
-
-
+# PHP_SPA ( Release 2.0 )
 ## การเขียน PHP แบบ รวมศูนย์ ( SPA ) ( แต่ก็ยังรันบนเชิร์ฟเวอร์อยู่ดี )
+
+## นี่เป็น Starter template
+
+---
+### หัวข้อ
+[PHP_SPA คืออะไร](#user-content-PHP_SPA คืออะไร)
+[ติดตั้ง](#user-content-ติดตั้ง)
+[การเขียนหน้าเว็บในรูปแบบฟังค์ชั่น](#user-content-การเขียนหน้าเว็บในรูปแบบฟังค์ชั่น)
+[การเชื่อมโยงแต่ละหน้า](#user-content-การเชื่อมโยงแต่ละหน้า)
+[การใช้ module](#user-content-การใช้ module)
+[การใช้ `wisit-router` module](#user-content-การใช้ `wisit-router` module)
+[การใช้ `SwitchPath` และ `Route`](#user-content-การใช้ `SwitchPath` และ `Route`)
+[การใช้ `getParams`](#user-content-การใช้ `getParams`)
+[การใช้ `getPath`](#user-content-การใช้ `getPath`)
+[การใช้ `title`](#user-content-การใช้ `title`)
+
+
+---  
+### PHP_SPA คืออะไร
+- **PHP_SPA** คือการเขียน PHP ในรูปแบบ single page ซึ่งจะทำงานบนหน้า index เพียงหน้าเดียว และมีการเขียนแต่ละหน้าในรูปแบบ function สำหรับ path จะสามารถกำหนดได้อย่างอิสระและไม่ขึ้นอยู่กับที่อยู่ของไฟล์ ซึ่งจะใช้ Route เป็นตัวกำหนด นอกจากนั้นยังสามารถกำหนด path แบบ dynamic ได้ และยังมีการรับค่าจาก path ได้อีก ซึ่งจะอธิบายในหัวข้อต่อๆ ไป
+
+-  **นี่เป็น Release version 2.0** ที่พัฒนาต่อยอดให้ใกล้เคียงกับการเขียน React มากขึ้น และ**ที่สำคัญ** ได้ปรับปรุงการเขียนให้สามารถ `require` ซ้ำได้ และเก็บค่าที่ `require` มาลงในตัวแปรได้
+---
+### ติดตั้ง
+  
+  ---
+### การเขียนหน้าเว็บในรูปแบบฟังค์ชั่น
+- การเขียนแต่ละหน้าจะเปลี่ยนไปเป็นการเขียนเป็นในรูปแบบ function แทนการเขียนแยกเป็นหน้าๆ ตามปกติ เช่นโค้ดด้านล่าง
+- ในตัวอย่างจะมีการเรียกใช้งาน module อยู่ด้วย ซึ่งจะอธิบายในตอนต่อๆ ไป
+
+```
+<?php
+return  function () {
+	[$wisit_router] =  module('wisit-router');
+	return  $wisit_router->title('Totorial') .
+	<<<HTML
+		<div>
+			<div>hello world</div>
+		</div>
+	HTML;
+};
+```
+- ในตัวอย่างจะ เขียน return function เพื่อให้ return ลงในตัวแปรเมื่อมีการ `require` ซึ่งก็ต้องสร้างตัวแปรมารับค่าด้วย และต้องไม่เขียนอย่างอื่นนอกขอบเขตการ `return`
+
+- ใน function นั้นจะมีการ `return` เป็นโค้ด HTML ที่ต้องการโชว์แสดงผล
+
+### การเชื่อมโยงแต่ละหน้า
+- ด้วยความที่มีการเขียนเป็นในรูปแบบ Page function ดังนั้นจึงจะมีการเรียกใช้ที่ต่างออกไป โดยเฉพาะการ `require` เข้าไปใช้งานร่วมกับ Page function อื่นๆ 
+
+```
+<?php
+return  function () {
+
+	['SwitchPath' => $SwitchPath, 'Route' => $Route] =  module('wisit-router');
+
+	$HomePage  =  require('./src/Home.php');
+	
+	return  $SwitchPath(
+		$Route('/', fn () => $HomePage()),
+		$Route('*', fn () => 'Not found page'),
+	);
+};
+```
+- ในตัวอย่างนี้จะเป็นการ `require` เข้ามาทำงานร่วมกับ `Route` ซึ่งได้มีการใช้ `require` และสร้างตัวแปรมารับค่า ซึ่งตัวแปรนั้นจะมี `type` เป็น `function`  ดังเช่นในตัวอย่าง
+
+- หากต้องการแทรก `$HomePage` ลงใน Content ของ HTML สามารถทำได้ตาม โค้ดด้านล่างนี้
+```
+<?php
+return  function () {
+	[$wisit_router] =  module('wisit-router');
+	
+	$HomePage  =  require('./src/Home.php');
+	
+	return  $wisit_router->title('Totorial') .
+	<<<HTML
+		<div>
+			<div>hello world</div>
+			{$HomePage()}
+		</div>
+	HTML;
+};
+```
+#### **ข้อควรระวัง เมื่อทำการ `require` ต้องใส่ที่อยู่ไฟล์โดยอ้างอิงจากโฟลเดอร์ที่อยู่นอกสุดเสมอ เพราะว่าตัวฟังค์ชั่นต่างๆ จะทำงานบน index.php เท่านั้น เช่น ตัวอย่างโค้ดด้านบนที่ตัวไฟล์อยู่ในโฟลเดอร์ src เช่นเดียวกับ Home.php แต่ก็ต้องมีการใส่อ้างอิง src 
+
+---
+### การใช้ module
+
+- ในส่วน module นั้น ใน starter template จะมีโฟลเดอร์ modules อยู่ ซึ่งจะเป็นการเก็บไฟล์ module ต่างๆ ซึ่งได้มีมาให้ใน template และอาจจะมีการเพิ่มมาใช้จากที่อื่นอีก
+
+- การเรียกใช้ module นั้นจะขึ้นอยู่กับการออกแบบของคนที่เขียน module นั้นๆ ขึ้นมา ซึ่งโดยธรรมดาแล้วจะเป็นการใช้ `require`  มาใช้งานโดยสร้างตัวแปรมารับค่าไว้ เหมือนกันกับการ `require` Page function   
+  - **แต่** ใน starter template ได้มีการสร้าง `module-import` ไว้ ซึ่งสามารถใช้ `module` แทน `require` ได้ ซึ่งในส่วนของ `module` นั้นจะเป็น function ที่จะรับชื่อของ module และทำการ `require` ให้ โดยไม่ต้องใส่ที่อยู่ให้ยืดยาว และมีการสร้างตัวแปรมารับค่าเหมือนกับการ `require` ปกติ 
+  - ชื่อของ module คือ ชื่อ โฟลเดอร์ของ module นั้นๆ
+
+- หากต้องการ **สร้าง** `module`เองนั้นมีข้อกำหนดดังนี้
+	- 1 ชื่อโฟลเดอร์ของ `module` และ ชื่อไฟล์ข้างในจะต้องเหมือนกัน 
+	- 2 หากจะทำให้มีการ `require` ซ้ำได้ และมีตัวแปรมารับค่า ต้องเขียนภายในขอบเขตการ `return`  เช่นเดียวกับการเขียน Page function ซึ่งจะ `return` เป็น function , variable, array, obj ก็ได้ทั้งนั้น
+---
+### การใช้ `wisit-router` module
+- `wisit-router` จะประกอบไปด้วย function ต่างๆ ดังนี้
+	- SwitchPath
+	- Route
+	- getParams
+	- getPath
+	- title
+- ในการ `require` เข้ามาใช้งานนั้น สามารถทำได้โดยการใช้ `require` หรือ `module` ก็ได้ในการเรียกใช้
+ซึ่งในส่วนของตัวแปรที่มารับค่านั้น ด้วยความที่ `wisit-router` สามารถ `return` ออกมาเป็น object ที่มี function ต่างๆ อยู่ครบ หรือสามารถ `return` เฉพาะ function ที่ต้องการเรียกใช้ได้
+หากต้องการ รับค่าเป็น object ก็ให้เขียน **ตัวแปร** รับค่าแบบด้านล่าง
+
+	` [$wisit_router] = module('wisit-router'); `
+	และมีการเรียกใช้แบบ object เช่น `$wisit_router->getParams();`
+
+	หากต้องการรับค่าเฉพาะ function ที่ต้องการ ให้เขียนในรูปแบบ `['key'=>$value]` โดย key จะเป็นชื่อของ function และ `$value` จะเป็นตัวแปรที่มารับค่า function ซึ่งสามารถตั้งชื่อตามชื่อของ function นั้นๆ ได้ เช่น 
+		` ['Route', $Route] = module('wisit-router'); `
+---
+### การใช้ `SwitchPath` และ `Route`
+- `SwitchPath` และ `Route` จะเป็นตัวที่ทำให้สามารถกำหนด path ได้อย่างอิสระและมีการทำงานที่เชื่อมโยงกับ Page function อื่น นอกจากนั้นยังสามารถกำหนด path ให้เป็น dynamic ได้  ซึ่งสองตัวนี้จะต้องทำงานร่วมกัน
+```
+<?php
+return  function () {
+	['SwitchPath' => $SwitchPath, 'Route' => $Route] =  module('wisit-router');
+	$HomePage  =  require('./src/Home.php');
+	$Tutorial  =  require('./src/Tutorial.php');
+	
+	return  $SwitchPath(
+		$Route('/tutorial/:', fn () => $Tutorial()),
+		$Route('/tutorial', fn () => $Tutorial()),
+		$Route('/', fn () => $HomePage()),
+		$Route('*', fn () => 'Not found page'),
+	);
+};
+```
+- Route จะเป็น function ที่จะรับค่า path และ callback function ที่จะ `return` เป็น Page function  หาก path ที่ user เข้ามาตรงกับที่กำหนดไว้ก็จะทำการ `return` Page function นั้นๆ ออกไป 
+ในการกำหนด path หากต้องการให้ path ตำแหน่งนั้นๆ เป็นแบบ dynamic หรือก็คือการอนุญาตให้ path ในตำแหน่งนั้นๆ เป็นค่าอะไรก็ได้ ก็ให้ใส่ `:` ลงในตำแหน่งนั้น ตามโค้ดตัวอย่าง
+การกำหนดให้เป็น `'*'` คือการกำหนดให้ตรงเสมอ เพื่อดัก error ของผู้ใช้ กรณีเข้าไม่ถูก
+Route นั้นจะเขียนภายใน SwitchPath และคั่นด้วย `,` ซึ่ง Route จะมีกี่ตัวก็ได้
+
+- SwitchPath จะเป็นตัวที่คอยรับ Route ไว้ หากว่า การเช็ค path ของ Route นั้นตรง ตัว Route ก็จะส่งค่ามาให้ SwitchPath และทำการสั่ง run callback function ที่มีการใส่ลงใน Route และจะได้มาเป็น เนื้อหา html ของ Page function นั้นๆ และ SwithPath จะ `return` ต่อไปในรูปแบบของ `string` ซึ่งสามารถนำไปต่อ string เข้ากับโค้ด html อื่นๆ ต่อได้อีก
+---
+### การใช้ `getParams`
+- getParams คือตัวที่จะดึง path ในตำแหน่งสุดท้ายมา เช่น `/home/view`  getParams ก็จะ `return` view มา แต่ว่าหากไม่อยากได้ตำแหน่งสุดท้าย ก็สามารถระบุตำแหน่งลงใน function ได้ โดยเริ่มนับจากตำแหน่งที่ 0
+ตัวอย่างโค้ด
+```
+<?php
+return  function () {
+	[$wisit_router] =  module('wisit-router')
+	$params  =  $wisit_router->getParams();
+	return  $wisit_router->title('title') .
+		<<<HTML
+			<div>
+				<div>hello world</div>
+				{$params}
+			</div>
+		HTML;
+};
+```
+---
+### การใช้ `getPath`
+- getPath นั้นหลักการทำงานคล้ายคลึงกับ getParams โดยที่ getParams จะได้มาเพียง path ตำแหน่งใดตำแหน่งหนึ่งเท่านั้น แต่ getPath จะได้มาทุกตำแหน่ง หรือก็คือได้ path แบบเต็มมาใช้งานนั่นเอง ซึ่งการใช้งานก็จะเหมือนกับ getParams เลย
+```
+<?php
+return  function () {
+	[$wisit_router] =  module('wisit-router')
+	$path  =  $wisit_router->getPath();
+	return  $wisit_router->title('title') .
+		<<<HTML
+			<div>
+				<div>hello world</div>
+				{$path}
+			</div>
+		HTML;
+};
+```
+
+--- 
+### การใช้ `title`
+- เพราะเป็นการเขียนในรูปแบบ Page function ที่จะทำงานบน index.php เท่านั้น จึงทำให้การกำหนด title ไม่สามารถทำได้แบบปกติ ซึ่ง title ตัวนี้เป็นฟังค์ชั่นที่จะรับค่า string ที่เป็น ข้อความ title และ  `return` ค่าออกมาเป็น `string` ที่เป็น โค้ด JavaScript ซึ่งต้องทำการต่อ string เข้ากับ โค้ด html  ตัวอย่าง โค้ด
+```
+<?php
+return  function () {
+	[$wisit_router] =  module('wisit-router')
+	return  $wisit_router->title('Home') .
+		<<<HTML
+			<div>
+				<div>This is Home Page</div>
+			</div>
+		HTML;
+};
+```
+---
+### ติดตั้ง
+-  วิธีที่ 1 **ติดตั้งผ่านคำสั่ง php** , โดยคัดลอกโค้ดด้านล่างไปวางไว้ที่ index.php แล้วเข้าหน้า index.php ผ่านเบราว์เซอร์ รอสักครู่ เป็นอันเสร็จสิ้น
+```
+code here
+```
+
+ - วิธีที่ 2  **ติดตั้งผ่าน git** ใช้คำสั่ง git clone เพื่อดาวน์โหลด template  `git clone https://github.com/Arikato111/PHP_SPA.git`  หลังจากนั้นจะได้โฟลเดอร์  **PHP_SPA**  มา ให้ย้ายไฟล์ทั้งหมดในโฟลเดอร์นั้นไปยัง htdocs ( ในกรณีใช้ Xampp ) โดยไม่ต้องสร้างโฟลเดอร์เพิ่มใน htdocs และใช้งานตามปกติ อย่าลืมเช็ค branch ว่าตรงกับที่ต้องการไหม หากไม่ก็ทำการเปลี่ยน branch
  
-## นี่เป็น Starter template สำหรับการเริ่มต้น
-[ติดตั้ง](#user-content-get-started)
-
-- **#นี่เป็น Simple version ที่แยกมาจาก Release เพื่อเน้นไปที่การใช้งานง่ายเป็นหลัก**
-
-- จะเปลี่ยนการเขียนเป็นในรูปแบบ function แทนการเขียนแยกเป็นหน้าๆ ตามภาพด้านล่าง
-![enter image description here](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/284551698_384648273626504_1609400707294192179_n.png?_nc_cat=106&ccb=1-7&_nc_sid=730e14&_nc_ohc=pwDeTxlOs3cAX_2vnRJ&_nc_ht=video.fubp1-1.fna&oh=00_AT8PjnA5Xo7Emvv9If8beQSA0wnKvJ0lbM-ICtP0spiCIg&oe=6295D40C)
-
- - ใน RootContent function ตามภาพด้านล่างจะเป็นการ return ค่าเพื่อไปแสดงผลยังหน้า index ซึ่งภายในจะมี headerSub function และ SwitchPath
-
-![อาจเป็นรูปภาพของ กำลังนั่ง](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/284486730_384648380293160_6865668386188902373_n.png?_nc_cat=111&ccb=1-7&_nc_sid=730e14&_nc_ohc=jkSXNjer7-8AX9SmY6f&_nc_ht=video.fubp1-1.fna&oh=00_AT_VhG7QMRCMM4-R6YS_JFD3gM6TTNLw50hlMZQpF_FUFQ&oe=6295C8A6)
-
-- สำหรับ headerSub จะเป็นการเขียนนอก SwitchPath เพื่อให้ปรากฏไปยังทุกหน้า
-- ส่วน SwitchPath และ Route ที่อยู่ภายในนั้นจะเป็นการกำหนด path และ function ของแต่ละหน้า เช่น '/about' ก็ให้ return function ที่เป็นหน้า about ทั้งนี้สามารถกำหนด path ได้ตามต้องการ ส่วน '*' ตามในภาพนั้นจะเป็นการกำหนดให้ตรงกับทุก path เพื่อดัก error กรณีผู้ใช้เข้าไม่ถูก path
-- จากภาพด้านบน จะเห็นได้ว่าใน Route มีการใส่ '/about/:' ตัว : จะเป็นการบอกว่า path ในตำแหน่งนั้นจะสามารถเป็นอะไรก็ได้ เช่น /about/hello หรือ /about/world หรืออะไรก็ตามที่มีต่อก็จะตรงทั้งหมด ชึ่งสามารถเขียนซ้อนกันได้เช่น /:/: ก็จะเป็นการอนุญาตให้ path ในสองตำแหน่งนั้นเป็นอะไรก็ได้
-
-- getParams function จะเป็นการเรียกใช้เพื่อได้ค่า path ลำดับสุดท้าย เช่น /about/value ก็จะได้ value มา และสามารถกำหนดตำแหน่งได้ โดยเริ่มนับจากตำแหน่งที่ 0 เช่น getParams(0) ก็จะได้ about
-
-- การเขียนแต่ละหน้าแบบ function และนำไปทำงานร่วมกับ Route แต่ละหน้าจะเปลี่ยนรูปแบบมาเป็นการเขียน function และ return ค่าแทนการเขียนแยกเป็นหน้าๆ ตามก่อน และยังสามารถทำงานประมวลผลใน function ได้ตามปกติ อย่างเช่น AboutPage() ที่เป็นหน้า about ที่สามารถเขียนประมวลผลใน function และสามารถเขียน function แยกย่อยได้อีก
-
-![การเขียนในรูปแบบ function](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/284306690_384648356959829_6978952492087751309_n.png?_nc_cat=106&ccb=1-7&_nc_sid=730e14&_nc_ohc=JTw3d4Xf-bAAX-8C_H-&_nc_ht=video.fubp1-1.fna&oh=00_AT9e6d7dAWNm_axSf5XclTaTYFzVN3F4Yshc0-CkoVo0CQ&oe=6295E3AF)
-
-- หากต้องการเชื่อมฐานข้อมูลควรใช้ $GLOBALS['con'] เพื่อให้สามารถใช้ใน function ต่างๆ โดยที่ตัว function ไม่ต้องรับค่า
-
-- หากต้องการใช้ src="" ใน html tag ควรเขียนโดยเริ่มต้นด้วย / แบบ src="/folder/file" ไม่ควรเขียนแบบ src="./folder/file" หรือ src="folder/file" สำหรับ link url ยังสามารถเขียนได้ปกติ 
-
-- การ import จะไม่ใช้ require หรือ include แต่จะใช้ import ซึ่งสามารถ import มาทั้ง folder ได้ เช่น import(‘./page/*’); ซึ่งควร import แต่ละไฟล์บน package.php เท่านั้น และระวังอย่า import ไฟล์หรือ folder ซ้ำ
-
-![import file](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/284483171_384648246959840_1120960904116659377_n.png?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=3QYcSRJC0XEAX_jIqfW&tn=tUFQlMH_65maGc9_&_nc_ht=video.fubp1-1.fna&oh=00_AT9rIou46tK7znRZoTRZGYumKqxfPCaWwX_O6D4Ht5TMkg&oe=6295F600)
-
-- เหมือนกับการเขียน SPA ทั่วๆ ไปที่ต้องนำไฟล์มาอยู่นอกสุด เช่น htdocs หาก git clone มาก็ให้นำไฟล์ที่อยู่ภายในออกมายัง htdocs ตามภาพที่เห็น
-
-![htdocs](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/284246817_383669577057707_2152403264513107397_n.png?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=cYRDS2vDD-IAX8OpeT1&tn=tUFQlMH_65maGc9_&_nc_ht=video.fubp1-1.fna&oh=00_AT99f0nbXfLqs1Ai4HbZa3TzUliycIQTRH5hzsOSzgFMHw&oe=629615A7)
-
-- เมื่อจะกำหนด title ควรใช้ title() และเขียน title ภายในเช่น title(“Home”) หรือตามภาพตัวอย่าง ซึ่งจะ return string ที่เป็น script ที่ใช้คำสั่ง javascript ดังนั้นต้องใช้ . เพื่อต่อ string เข้ากับส่วนโค้ด html เพื่อเปลี่ยน title และไม่ควรใช้ช้ำซ้อน
-
-- ภาพอย่างง่ายที่อธิบายถึงการทำงาน
-![enter image description here](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/284201920_384550966969568_3371549898208564415_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=730e14&_nc_ohc=_OtNFuIvKiQAX8jWgYw&_nc_ht=video.fubp1-1.fna&oh=00_AT9NWpFp3rs8qByWswAJJCWHwZJbDqr4_4j_0o-87qDvPQ&oe=6294E363)
-
-- Tip! หากต้องการเขียน function สำหรับใช้งานเฉพาะใน function page ให้เขียนตามภาพด้านล่าง
-![enter image description here](https://video.fubp1-1.fna.fbcdn.net/v/t39.30808-6/284921350_386554703435861_6912134901672407422_n.png?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=Arn23hot07wAX96apmU&tn=tUFQlMH_65maGc9_&_nc_ht=video.fubp1-1.fna&oh=00_AT8uVSiqUOqYWbsCfn8GiU7yN9xoDXwhU3VXYtUWObecXw&oe=629A0E4D)
-
+- วิธีที่ 3 **ติดตั้งผ่าน zip file** ดาวน์โหลด zip file click  [ดาวน์โหลด](https://github.com/Arikato111/PHP_SPA/archive/refs/heads/Release2.0.zip)  จากนั้นจะได้ไฟล๋  **PHP_SPA-Release2.0.zip**  ในไฟล์ zip จะมีโฟลเดอร์ชื่อเดียวกันอยู่ ให้แตกไฟล์นำโฟลเดอร์นั้นออกมา แล้วเข้าไปยังโฟลเดอร์นั้น ย้ายไฟล์ทั้งหมดไปที่ htdocs ( ในกรณีใช้ Xampp ) โดยไม่ต้องสร้างโฟลเดอร๋เพิ่มใน htdocs และใช้งานตามปกติ

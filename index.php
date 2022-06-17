@@ -1,8 +1,8 @@
 <?php
 session_start();
 // Don't Delete or Change
-require('./modules/wisit-single-page.php');
-require("./package.php");
+require('./modules/module-import/module-import.php');
+$Main = require('./src/main.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +18,7 @@ require("./package.php");
 
 <body>
     <div>
-        <?php echo RootContent(); ?>
+        <?php echo $Main(); ?>
     </div>
     <script src="/static/script.js"></script>
 </body>
