@@ -22,7 +22,6 @@ return function () {
             <div>You can use module function to require module by input the only name's module, it has return module</div>
             <div style="font-size: 18px;">You will find style.css and script.js in static folder.</div>
             <h4>Read more at <a target="_blank" href="https://github.com/Arikato111/PHP_SPA">Github</a></h4>
-            <h4>Read totorial at <a href="/tutorial">Here</a></h4>
         </div>
         HTML;
 };
