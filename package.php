@@ -1,3 +1,3 @@
 <?php
 // require package from modules at here
-require('./modules/wisit-single-page/wisit-single-page.php'); 
+require('./modules/wisit-router/wisit-router.php'); 
