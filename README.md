@@ -6,16 +6,25 @@
 
 ---
 ### หัวข้อ
-[PHP_SPA คืออะไร](#user-content-PHP_SPA-คืออะไร)
+[PHP_SPA คืออะไร](#php_spa-คืออะไร)
+
 [ติดตั้ง](#user-content-ติดตั้ง)
+
 [การเขียนหน้าเว็บในรูปแบบฟังค์ชั่น](#user-content-การเขียนหน้าเว็บในรูปแบบฟังค์ชั่น)
+
 [การเชื่อมโยงแต่ละหน้า](#user-content-การเชื่อมโยงแต่ละหน้า)
+
 [การใช้ module](#user-content-การใช้-module)
+
 [การใช้ `wisit-router` module](#user-content-การใช้-wisit-router-module)
-[การใช้ `SwitchPath` และ `Route`](#user-content-การใช้-SwitchPath-และ-Route)
-[การใช้ `getParams`](#user-content-การใช้-getParams)
-[การใช้ `getPath`](#user-content-การใช้-getPath)
-[การใช้ `title`](#user-content-การใช้-title)
+
+[การใช้ `SwitchPath` และ `Route`](#การใช้-switchpath-และ-route)
+
+[การใช้ `getParams`](#การใช้-getParams)
+
+[การใช้ `getPath`](#การใช้-getpath)
+
+[การใช้ `title`](#การใช้-title)
 
 
 ---  
@@ -24,9 +33,7 @@
 
 -  **นี่เป็น Release version 2.0** ที่พัฒนาต่อยอดให้ใกล้เคียงกับการเขียน React มากขึ้น และ**ที่สำคัญ** ได้ปรับปรุงการเขียนให้สามารถ `require` ซ้ำได้ และเก็บค่าที่ `require` มาลงในตัวแปรได้
 ---
-### ติดตั้ง
-  
-  ---
+
 ### การเขียนหน้าเว็บในรูปแบบฟังค์ชั่น
 - การเขียนแต่ละหน้าจะเปลี่ยนไปเป็นการเขียนเป็นในรูปแบบ function แทนการเขียนแยกเป็นหน้าๆ ตามปกติ เช่นโค้ดด้านล่าง
 - ในตัวอย่างจะมีการเรียกใช้งาน module อยู่ด้วย ซึ่งจะอธิบายในตอนต่อๆ ไป
