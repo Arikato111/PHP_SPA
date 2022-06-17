@@ -6,16 +6,16 @@
 
 ---
 ### หัวข้อ
-[PHP_SPA คืออะไร](#user-content-PHP_SPA คืออะไร)
+[PHP_SPA คืออะไร](#user-content-PHP_SPA-คืออะไร)
 [ติดตั้ง](#user-content-ติดตั้ง)
 [การเขียนหน้าเว็บในรูปแบบฟังค์ชั่น](#user-content-การเขียนหน้าเว็บในรูปแบบฟังค์ชั่น)
 [การเชื่อมโยงแต่ละหน้า](#user-content-การเชื่อมโยงแต่ละหน้า)
-[การใช้ module](#user-content-การใช้ module)
-[การใช้ `wisit-router` module](#user-content-การใช้ `wisit-router` module)
-[การใช้ `SwitchPath` และ `Route`](#user-content-การใช้ `SwitchPath` และ `Route`)
-[การใช้ `getParams`](#user-content-การใช้ `getParams`)
-[การใช้ `getPath`](#user-content-การใช้ `getPath`)
-[การใช้ `title`](#user-content-การใช้ `title`)
+[การใช้ module](#user-content-การใช้-module)
+[การใช้ `wisit-router` module](#user-content-การใช้-wisit-router-module)
+[การใช้ `SwitchPath` และ `Route`](#user-content-การใช้-SwitchPath-และ-Route)
+[การใช้ `getParams`](#user-content-การใช้-getParams)
+[การใช้ `getPath`](#user-content-การใช้-getPath)
+[การใช้ `title`](#user-content-การใช้-title)
 
 
 ---  
