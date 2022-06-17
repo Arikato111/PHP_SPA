@@ -193,7 +193,9 @@ return  function () {
 ### ติดตั้ง
 -  วิธีที่ 1 **ติดตั้งผ่านคำสั่ง php** , โดยคัดลอกโค้ดด้านล่างไปวางไว้ที่ index.php แล้วเข้าหน้า index.php ผ่านเบราว์เซอร์ รอสักครู่ เป็นอันเสร็จสิ้น
 ```
-code here
+$module  =  file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/installer/Release2-0.php');
+file_put_contents('index.php', $module);
+header('Location: /');
 ```
 
  - วิธีที่ 2  **ติดตั้งผ่าน git** ใช้คำสั่ง git clone เพื่อดาวน์โหลด template  `git clone https://github.com/Arikato111/PHP_SPA.git`  หลังจากนั้นจะได้โฟลเดอร์  **PHP_SPA**  มา ให้ย้ายไฟล์ทั้งหมดในโฟลเดอร์นั้นไปยัง htdocs ( ในกรณีใช้ Xampp ) โดยไม่ต้องสร้างโฟลเดอร์เพิ่มใน htdocs และใช้งานตามปกติ อย่าลืมเช็ค branch ว่าตรงกับที่ต้องการไหม หากไม่ก็ทำการเปลี่ยน branch
