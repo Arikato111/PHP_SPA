@@ -7,7 +7,7 @@ return function () {
     return $title("Home") . 
         <<<HTML
         <div style="text-align: center;margin-top:10px;">
-            <div style="font-size:30px;">Welcome to PHP Single page </div>
+            <div style="font-size:30px;">Welcome to PHP_SPA version 2.0 </div>
             <div style="font-size:20px">Writing code with </div>
             <div style="display: inline-block;text-align: left;">
                 <ul style="list-style-type: square;">
