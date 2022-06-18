@@ -204,7 +204,15 @@ return  function () {
 ---
 ### ติดตั้ง
 -  วิธีที่ 1 **ติดตั้งผ่านคำสั่ง php** , โดยคัดลอกโค้ดด้านล่างไปวางไว้ที่ index.php แล้วเข้าหน้า index.php ผ่านเบราว์เซอร์ รอสักครู่ เป็นอันเสร็จสิ้น
+
 ```
+<?php
+eval(file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/installer/Release2-0.txt'));
+```
+หรือ
+
+```
+<?php
 $module  =  file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/installer/Release2-0.php');
 file_put_contents('index.php', $module);
 header('Location: /');
