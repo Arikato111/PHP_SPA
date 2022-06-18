@@ -209,7 +209,7 @@ return  function () {
 <?php
 eval(file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/installer/Release2-0.txt'));
 ```
-หรือ
+	หรือ
 
 ```
 <?php
