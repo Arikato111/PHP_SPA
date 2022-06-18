@@ -1,8 +1,9 @@
 <?php
 session_start();
-// Don't Delete or Change
-require('./modules/module-import/module-import.php');
-$Main = require('./src/main.php');
+// Don't Delete
+// this require for use at all page
+require('./modules/module-import/module-import.php'); // module-import from modules to use module function
+$Main = require('./src/Main.php'); // Main Page function | require from Main.php
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +22,8 @@ $Main = require('./src/main.php');
         <?php echo $Main(); ?>
     </div>
     <script src="/static/script.js"></script>
+    <!-- do not use ./script.js or script.js, only use /script.js -->
+
 </body>
 
 </html>
