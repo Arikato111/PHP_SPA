@@ -210,7 +210,7 @@ return  function () {
 eval(file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/installer/Release2-0.txt'));
 ```
 
-	หรือ
+- สามารถใช้โค้ดด้านบนหรือด้านล่างก็ได้ เลือกอันใดอันหนึ่ง
 
 
 ```
