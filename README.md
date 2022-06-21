@@ -122,7 +122,7 @@ return  function () {
 	และมีการเรียกใช้แบบ object เช่น `$wisit_router->getParams();`
 
 	หากต้องการรับค่าเฉพาะ function ที่ต้องการ ให้เขียนในรูปแบบ `['key'=>$value]` โดย key จะเป็นชื่อของ function และ `$value` จะเป็นตัวแปรที่มารับค่า function ซึ่งสามารถตั้งชื่อตามชื่อของ function นั้นๆ ได้ เช่น 
-		` ['Route', $Route] = module('wisit-router'); `
+		` ['Route'=>$Route] = module('wisit-router'); `
 ---
 ### การใช้ `SwitchPath` และ `Route`
 - `SwitchPath` และ `Route` จะเป็นตัวที่ทำให้สามารถกำหนด path ได้อย่างอิสระและมีการทำงานที่เชื่อมโยงกับ Page function อื่น นอกจากนั้นยังสามารถกำหนด path ให้เป็น dynamic ได้  ซึ่งสองตัวนี้จะต้องทำงานร่วมกัน
