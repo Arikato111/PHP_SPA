@@ -38,7 +38,7 @@
 - การเขียนแต่ละหน้าจะเปลี่ยนไปเป็นการเขียนเป็นในรูปแบบ function แทนการเขียนแยกเป็นหน้าๆ ตามปกติ เช่นโค้ดด้านล่าง
 - ในตัวอย่างจะมีการเรียกใช้งาน module อยู่ด้วย ซึ่งจะอธิบายในตอนต่อๆ ไป
 
-```
+```php
 <?php
 return  function () {
 	[$wisit_router] =  module('wisit-router');
@@ -57,7 +57,7 @@ return  function () {
 ### การเชื่อมโยงแต่ละหน้า
 - ด้วยความที่มีการเขียนเป็นในรูปแบบ Page function ดังนั้นจึงจะมีการเรียกใช้ที่ต่างออกไป โดยเฉพาะการ `require` เข้าไปใช้งานร่วมกับ Page function อื่นๆ 
 
-```
+```php
 <?php
 return  function () {
 
@@ -76,7 +76,7 @@ return  function () {
 - ต้องมีการ `require` ภายใน function เท่านั้น ห้ามทำนอก function 
 
 - หากต้องการแทรก `$HomePage` ลงใน Content ของ HTML สามารถทำได้ตาม โค้ดด้านล่างนี้
-```
+```php
 <?php
 return  function () {
 	[$wisit_router] =  module('wisit-router');
@@ -126,7 +126,7 @@ return  function () {
 ---
 ### การใช้ `SwitchPath` และ `Route`
 - `SwitchPath` และ `Route` จะเป็นตัวที่ทำให้สามารถกำหนด path ได้อย่างอิสระและมีการทำงานที่เชื่อมโยงกับ Page function อื่น นอกจากนั้นยังสามารถกำหนด path ให้เป็น dynamic ได้  ซึ่งสองตัวนี้จะต้องทำงานร่วมกัน
-```
+```php
 <?php
 return  function () {
 	['SwitchPath' => $SwitchPath, 'Route' => $Route] =  module('wisit-router');
@@ -154,7 +154,7 @@ return  function () {
 ### การใช้ `getParams`
 - getParams คือตัวที่จะดึง path ในตำแหน่งสุดท้ายมา เช่น `/home/view`  getParams ก็จะ `return` view มา แต่ว่าหากไม่อยากได้ตำแหน่งสุดท้าย ก็สามารถระบุตำแหน่งลงใน function ได้ โดยเริ่มนับจากตำแหน่งที่ 0
 ตัวอย่างโค้ด
-```
+```php
 <?php
 return  function () {
 	[$wisit_router] =  module('wisit-router')
@@ -171,7 +171,7 @@ return  function () {
 ---
 ### การใช้ `getPath`
 - getPath นั้นหลักการทำงานคล้ายคลึงกับ getParams โดยที่ getParams จะได้มาเพียง path ตำแหน่งใดตำแหน่งหนึ่งเท่านั้น แต่ getPath จะได้มาทุกตำแหน่ง หรือก็คือได้ path แบบเต็มมาใช้งานนั่นเอง ซึ่งการใช้งานก็จะเหมือนกับ getParams เลย
-```
+```php
 <?php
 return  function () {
 	[$wisit_router] =  module('wisit-router')
@@ -189,7 +189,7 @@ return  function () {
 --- 
 ### การใช้ `title`
 - เพราะเป็นการเขียนในรูปแบบ Page function ที่จะทำงานบน index.php เท่านั้น จึงทำให้การกำหนด title ไม่สามารถทำได้แบบปกติ ซึ่ง title ตัวนี้เป็นฟังค์ชั่นที่จะรับค่า string ที่เป็น ข้อความ title และ  `return` ค่าออกมาเป็น `string` ที่เป็น โค้ด JavaScript ซึ่งต้องทำการต่อ string เข้ากับ โค้ด html  ตัวอย่าง โค้ด
-```
+```php
 <?php
 return  function () {
 	[$wisit_router] =  module('wisit-router')
@@ -205,7 +205,7 @@ return  function () {
 ### ติดตั้ง
 -  วิธีที่ 1 **ติดตั้งผ่านคำสั่ง php** , โดยคัดลอกโค้ดด้านล่างไปวางไว้ที่ index.php แล้วเข้าหน้า index.php ผ่านเบราว์เซอร์ รอสักครู่ เป็นอันเสร็จสิ้น
 
-```
+```php
 <?php
 eval(file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/installer/Release2-0.txt'));
 ```
@@ -213,7 +213,7 @@ eval(file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/ins
 - สามารถใช้โค้ดด้านบนหรือด้านล่างก็ได้ เลือกอันใดอันหนึ่ง
 
 
-```
+```php
 <?php
 $module  =  file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/installer/Release2-0.php');
 file_put_contents('index.php', $module);
