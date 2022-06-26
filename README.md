@@ -115,14 +115,28 @@ return  function () {
 	- getPath
 	- title
 - ในการ `require` เข้ามาใช้งานนั้น สามารถทำได้โดยการใช้ `require` หรือ `module` ก็ได้ในการเรียกใช้
-ซึ่งในส่วนของตัวแปรที่มารับค่านั้น ด้วยความที่ `wisit-router` สามารถ `return` ออกมาเป็น object ที่มี function ต่างๆ อยู่ครบ หรือสามารถ `return` เฉพาะ function ที่ต้องการเรียกใช้ได้
-หากต้องการ รับค่าเป็น object ก็ให้เขียน **ตัวแปร** รับค่าแบบด้านล่าง
+ซึ่งหากใช้ `module` จะเปลี่ยน input เป็นชื่อของ module 
 
-	` [$wisit_router] = module('wisit-router'); `
-	และมีการเรียกใช้แบบ object เช่น `$wisit_router->getParams();`
+- ใน เวอร์ชั่นนี้ได้ปรับปรุงการ `require` โดยสามารถ `require` ได้ 3 วิธีดังนี้
+- **1 . การ `require` ในรูปแบบ `object`** ที่จะต้องประกาศตัวแปรมารับค่า และตัวแปรนั้นจะมี `type` เป็น `object` ที่มีทุก `function` อยู่ภายในทั้งหมด
+```php
+[$wisit-router] = require('./modules/wisit-router/wisit-router.php');
+```
+- ตัวแปรที่มารับค่าคือ `$wisit-router` ซึ่งต้องเขียนภายใน [ ]
 
-	หากต้องการรับค่าเฉพาะ function ที่ต้องการ ให้เขียนในรูปแบบ `['key'=>$value]` โดย key จะเป็นชื่อของ function และ `$value` จะเป็นตัวแปรที่มารับค่า function ซึ่งสามารถตั้งชื่อตามชื่อของ function นั้นๆ ได้ เช่น 
-		` ['Route'=>$Route] = module('wisit-router'); `
+- **2 . การ `require` เฉพาะ `function` ที่ต้องการ** ซึ่งจะมีการ `require` ไม่ต่างจากข้อ 1 แต่มีสิ่งที่ต่างออกไปก็คือ รูปแบบการเขียนตัวแปรมารับค่า ที่จะเขียนแบบนี้ `['name'=>$name]` โดย `name` คือชื่อตัวแปรที่ต้องการ และ `$name` คือตัวแปรที่มารับค่า ยกตัวอย่างเช่น
+```php
+['SwitchPath' => $SwitchPath, 'Route' => $Route] = module('wisit-router');
+```
+
+- **3 . การ `require` แบบปกติ** ซึ่งในโฟลเดอร์ของ `module` นั้นจะมีการเขียน `function` แยกเป็นไฟล์ๆ ซึ่งสามารถทำการ `require` จากไฟล์นั้นๆ ได้เลย เช่น
+
+```php
+$getPath = require('./modules/wisit-router/getPath.php');
+```
+- สังเกตุว่าไฟล์ที่ `require` มานั้นจะไม่ใช่ `wisit-router.php` ตามปกติ ซึ่งในที่นี้เป็น `getPath.php` คือ `getPath function` นั่นเอง และตัวแปรที่มารับค่านั้นก็สร้างตามปกติได้เลย
+- ข้อควรระวังคือ วิธีนี้จะไม่สามารถใช้ `module()` ในการ `require` ได้ 
+
 ---
 ### การใช้ `SwitchPath` และ `Route`
 - `SwitchPath` และ `Route` จะเป็นตัวที่ทำให้สามารถกำหนด path ได้อย่างอิสระและมีการทำงานที่เชื่อมโยงกับ Page function อื่น นอกจากนั้นยังสามารถกำหนด path ให้เป็น dynamic ได้  ซึ่งสองตัวนี้จะต้องทำงานร่วมกัน
@@ -188,13 +202,14 @@ return  function () {
 
 --- 
 ### การใช้ `title`
-- เพราะเป็นการเขียนในรูปแบบ Page function ที่จะทำงานบน index.php เท่านั้น จึงทำให้การกำหนด title ไม่สามารถทำได้แบบปกติ ซึ่ง title ตัวนี้เป็นฟังค์ชั่นที่จะรับค่า string ที่เป็น ข้อความ title และ  `return` ค่าออกมาเป็น `string` ที่เป็น โค้ด JavaScript ซึ่งต้องทำการต่อ string เข้ากับ โค้ด html  ตัวอย่าง โค้ด
+- เพราะเป็นการเขียนในรูปแบบ Page function ที่จะทำงานบน index.php เท่านั้น จึงทำให้การกำหนด title ไม่สามารถทำได้แบบปกติ
+- ในเวอร์ชั่นนี้ได้ทำการปรับปรุงทำให้สามารถใช้ `title();` โดยไม่ต้องทำการต่อ string แต่สามารถเรียกใช้เดี่ยวๆ ได้ และไม่ได้ใช้ `javascript` ในการเปลี่ยน title
 ```php
 <?php
 return  function () {
 	[$wisit_router] =  module('wisit-router')
-	return  $wisit_router->title('Home') .
-		<<<HTML
+	$wisit_router->title('Home');
+	return <<<HTML
 			<div>
 				<div>This is Home Page</div>
 			</div>

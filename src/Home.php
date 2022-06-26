@@ -1,11 +1,9 @@
 <?php
 return function () { // it has no function's name , It will return to variable when got require
-    ['title' => $title] = module('wisit-router'); // import module as function
+    ['title' => $title] = require('./modules/wisit-router/wisit-router.php'); // import module as function
 
-    // if want to show Header in all page , can write Header outside SwitchPath 
-    // and String Concatenation with SwitchPath by .
-    return $title("Home") . // use title function to change title
-        <<<HTML
+    $title('Home'); // use title function to change title
+    return <<<HTML
         <div style="text-align: center;margin-top:10px;">
             <div style="font-size:30px;">Welcome to PHP_SPA version 2.0 </div>
             <div style="font-size:20px">Writing code with </div>
