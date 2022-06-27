@@ -130,7 +130,7 @@ return  function () {
 ['SwitchPath' => $SwitchPath, 'Route' => $Route] = module('wisit-router');
 ```
 
-- **3 . การ `require` แบบปกติ** ซึ่งในโฟลเดอร์ของ `module` นั้นจะมีการเขียน `function` แยกเป็นไฟล์ๆ ซึ่งสามารถทำการ `require` จากไฟล์นั้นๆ ได้เลย เช่น
+- **3 . การ `require` แบบปกติ** ซึ่งจะ `require` เฉพาะฟังค์ชั่นที่ต้องการ ซึ่งในโฟลเดอร์ของ `module` นั้นจะมีการเขียน `function` แยกเป็นไฟล์ๆ ซึ่งสามารถทำการ `require` จากไฟล์นั้นๆ ได้เลย เช่น
 
 ```php
 $getPath = require('./modules/wisit-router/getPath.php');
@@ -223,7 +223,7 @@ return  function () {
 
 ```php
 <?php
-eval(file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/installer/Release2-0.txt'));
+eval(file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/installer/Release2-1.txt'));
 ```
 
 - สามารถใช้โค้ดด้านบนหรือด้านล่างก็ได้ เลือกอันใดอันหนึ่ง
@@ -231,11 +231,11 @@ eval(file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/ins
 
 ```php
 <?php
-$module  =  file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/installer/Release2-0.php');
+$module  =  file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/installer/Release2-1.php');
 file_put_contents('index.php', $module);
 header('Location: /');
 ```
 
  - วิธีที่ 2  **ติดตั้งผ่าน git** ใช้คำสั่ง git clone เพื่อดาวน์โหลด template  `git clone https://github.com/Arikato111/PHP_SPA.git`  หลังจากนั้นจะได้โฟลเดอร์  **PHP_SPA**  มา ให้ย้ายไฟล์ทั้งหมดในโฟลเดอร์นั้นไปยัง htdocs ( ในกรณีใช้ Xampp ) โดยไม่ต้องสร้างโฟลเดอร์เพิ่มใน htdocs และใช้งานตามปกติ อย่าลืมเช็ค branch ว่าตรงกับที่ต้องการไหม หากไม่ก็ทำการเปลี่ยน branch
  
-- วิธีที่ 3 **ติดตั้งผ่าน zip file** ดาวน์โหลด zip file click  [ดาวน์โหลด](https://github.com/Arikato111/PHP_SPA/archive/refs/heads/Release2.0.zip)  จากนั้นจะได้ไฟล๋  **PHP_SPA-Release2.0.zip**  ในไฟล์ zip จะมีโฟลเดอร์ชื่อเดียวกันอยู่ ให้แตกไฟล์นำโฟลเดอร์นั้นออกมา แล้วเข้าไปยังโฟลเดอร์นั้น ย้ายไฟล์ทั้งหมดไปที่ htdocs ( ในกรณีใช้ Xampp ) โดยไม่ต้องสร้างโฟลเดอร๋เพิ่มใน htdocs และใช้งานตามปกติ
+- วิธีที่ 3 **ติดตั้งผ่าน zip file** ดาวน์โหลด zip file click  [ดาวน์โหลด](https://github.com/Arikato111/PHP_SPA/archive/refs/heads/Release2.1.zip)  จากนั้นจะได้ไฟล๋  **PHP_SPA-Release2.0.zip**  ในไฟล์ zip จะมีโฟลเดอร์ชื่อเดียวกันอยู่ ให้แตกไฟล์นำโฟลเดอร์นั้นออกมา แล้วเข้าไปยังโฟลเดอร์นั้น ย้ายไฟล์ทั้งหมดไปที่ htdocs ( ในกรณีใช้ Xampp ) โดยไม่ต้องสร้างโฟลเดอร๋เพิ่มใน htdocs และใช้งานตามปกติ
