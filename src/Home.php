@@ -1,6 +1,6 @@
 <?php
 return function () { // it has no function's name , It will return to variable when got require
-    ['title' => $title] = require('./modules/wisit-router/wisit-router.php'); // import module as function
+    ['title' => $title] = require('./modules/wisit-router/main.m.php'); // import module as function
 
     $title('Home'); // use title function to change title
     return <<<HTML
