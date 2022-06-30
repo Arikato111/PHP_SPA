@@ -3,7 +3,7 @@ return function () {
     session_start(); // <-- you can delete if don't need to use
 
     // !important | require normal module at here
-    require('./modules/module-import/module-import.php'); // module-import from modules to use module function
+    require('./modules/module-import/main.m.php'); // module-import from modules to use module function
 
     // import module as function by module function 
     ['SwitchPath' => $SwitchPath, 'Route' => $Route] = module('wisit-router');
