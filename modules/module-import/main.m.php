@@ -5,5 +5,5 @@
     * LICENSE file in the root directory of this source tree.
 */
 function module($moduleName) {
-    return require('./modules/' . $moduleName . '/' . $moduleName . '.php');
+    return require('./modules/' . $moduleName . '/' . 'main.m.php');
 }

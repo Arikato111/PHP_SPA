@@ -1,9 +1,10 @@
 
-# PHP_SPA ( Release 2.0 )
+# PHP_SPA ( Release 2.1 )
 ## การเขียน PHP แบบ รวมศูนย์ ( SPA ) ( แต่ก็ยังรันบนเชิร์ฟเวอร์อยู่ดี )
 
 ## นี่เป็น Starter template
-
+---
+#### ในเวอร์ชั่นนี้ได้ทำการปรับปรุงในส่วนของ การ require `wisit-router` และการทำงานของ `title()`
 ---
 ### หัวข้อ
 [PHP_SPA คืออะไร](#php_spa-คืออะไร)
@@ -99,12 +100,13 @@ return  function () {
 
 - ในส่วน module นั้น ใน starter template จะมีโฟลเดอร์ modules อยู่ ซึ่งจะเป็นการเก็บไฟล์ module ต่างๆ ซึ่งได้มีมาให้ใน template และอาจจะมีการเพิ่มมาใช้จากที่อื่นอีก
 
-- การเรียกใช้ module นั้นจะขึ้นอยู่กับการออกแบบของคนที่เขียน module นั้นๆ ขึ้นมา ซึ่งโดยธรรมดาแล้วจะเป็นการใช้ `require`  มาใช้งานโดยสร้างตัวแปรมารับค่าไว้ เหมือนกันกับการ `require` Page function   
-  - **แต่** ใน starter template ได้มีการสร้าง `module-import` ไว้ ซึ่งสามารถใช้ `module` แทน `require` ได้ ซึ่งในส่วนของ `module` นั้นจะเป็น function ที่จะรับชื่อของ module และทำการ `require` ให้ โดยไม่ต้องใส่ที่อยู่ให้ยืดยาว และมีการสร้างตัวแปรมารับค่าเหมือนกับการ `require` ปกติ 
+- การเรียกใช้ module นั้นจะขึ้นอยู่กับการออกแบบของคนที่เขียน module นั้นๆ ขึ้นมา ซึ่งโดยธรรมดาแล้วจะเป็นการใช้ `require`  มาใช้งานโดยสร้างตัวแปรมารับค่าไว้ เหมือนกันกับการ `require` Page function ซึ่งไฟล์หลักของ `module` นั้นๆ จะชื่อ `main.m.php` ซึ่งโดยหลักให้ `require` ที่ไฟล์นี้ของ `module`นั้นๆ 
+  - **แต่** ใน starter template ได้มีการสร้าง `module-import` ไว้ ซึ่งสามารถใช้ `module` แทน `require` ได้ ซึ่งในส่วนของ `module` นั้นจะเป็น function ซึ่งจะรับเพียงชื่อของ module เท่านั้น และทำการ `require` ให้ โดยไม่ต้องใส่ที่อยู่ให้ยืดยาว และมีการสร้างตัวแปรมารับค่าเหมือนกับการ `require` ปกติ 
   - ชื่อของ module คือ ชื่อ โฟลเดอร์ของ module นั้นๆ
 
 - หากต้องการ **สร้าง** `module`เองนั้นมีข้อกำหนดดังนี้
-	- 1 ชื่อโฟลเดอร์ของ `module` และ ชื่อไฟล์ข้างในจะต้องเหมือนกัน 
+	- 0 ไฟล์หลักใน `module` จะต้องชื่อ `main.m.php` เท่านั้น
+	- 1 ชื่อโฟลเดอร์ของ `module` คือชื่อของ `module` 
 	- 2 หากจะทำให้มีการ `require` ซ้ำได้ และมีตัวแปรมารับค่า ต้องเขียนภายในขอบเขตการ `return`  เช่นเดียวกับการเขียน Page function ซึ่งจะ `return` เป็น function , variable, array, obj ก็ได้ทั้งนั้น
 ---
 ### การใช้ `wisit-router` module
@@ -115,14 +117,28 @@ return  function () {
 	- getPath
 	- title
 - ในการ `require` เข้ามาใช้งานนั้น สามารถทำได้โดยการใช้ `require` หรือ `module` ก็ได้ในการเรียกใช้
-ซึ่งในส่วนของตัวแปรที่มารับค่านั้น ด้วยความที่ `wisit-router` สามารถ `return` ออกมาเป็น object ที่มี function ต่างๆ อยู่ครบ หรือสามารถ `return` เฉพาะ function ที่ต้องการเรียกใช้ได้
-หากต้องการ รับค่าเป็น object ก็ให้เขียน **ตัวแปร** รับค่าแบบด้านล่าง
+ซึ่งหากใช้ `module` จะเปลี่ยน input เป็นชื่อของ module 
 
-	` [$wisit_router] = module('wisit-router'); `
-	และมีการเรียกใช้แบบ object เช่น `$wisit_router->getParams();`
+- ใน เวอร์ชั่นนี้ได้ปรับปรุงการ `require` โดยสามารถ `require` ได้ 3 วิธีดังนี้
+- **1 . การ `require` ในรูปแบบ `object`** ที่จะต้องประกาศตัวแปรมารับค่า และตัวแปรนั้นจะมี `type` เป็น `object` ที่มีทุก `function` อยู่ภายในทั้งหมด
+```php
+[$wisit-router] = require('./modules/wisit-router/main.m.php');
+```
+- ตัวแปรที่มารับค่าคือ `$wisit-router` ซึ่งต้องเขียนภายใน [ ]
 
-	หากต้องการรับค่าเฉพาะ function ที่ต้องการ ให้เขียนในรูปแบบ `['key'=>$value]` โดย key จะเป็นชื่อของ function และ `$value` จะเป็นตัวแปรที่มารับค่า function ซึ่งสามารถตั้งชื่อตามชื่อของ function นั้นๆ ได้ เช่น 
-		` ['Route'=>$Route] = module('wisit-router'); `
+- **2 . การ `require` เฉพาะ `function` ที่ต้องการ** ซึ่งจะมีการ `require` ไม่ต่างจากข้อ 1 แต่มีสิ่งที่ต่างออกไปก็คือ รูปแบบการเขียนตัวแปรมารับค่า ที่จะเขียนแบบนี้ `['name'=>$name]` โดย `name` คือชื่อฟังค์ชั่นที่ต้องการ และ `$name` คือตัวแปรที่มารับค่า ยกตัวอย่างเช่น
+```php
+['SwitchPath' => $SwitchPath, 'Route' => $Route] = module('wisit-router');
+```
+
+- **3 . การ `require` แบบปกติ** ซึ่งจะ `require` เฉพาะฟังค์ชั่นที่ต้องการ ซึ่งในโฟลเดอร์ของ `module` นั้นจะมีการเขียน `function` แยกเป็นไฟล์ๆ ซึ่งสามารถทำการ `require` จากไฟล์นั้นๆ ได้เลย เช่น
+
+```php
+$getPath = require('./modules/wisit-router/getPath.php');
+```
+- สังเกตุว่าไฟล์ที่ `require` มานั้นจะไม่ใช่ `main.m.php` ตามปกติ ซึ่งในที่นี้เป็น `getPath.php` คือ `getPath function` นั่นเอง และตัวแปรที่มารับค่านั้นก็สร้างตามปกติได้เลย
+- ข้อควรระวังคือ วิธีนี้จะไม่สามารถใช้ `module()` ในการ `require` ได้ 
+
 ---
 ### การใช้ `SwitchPath` และ `Route`
 - `SwitchPath` และ `Route` จะเป็นตัวที่ทำให้สามารถกำหนด path ได้อย่างอิสระและมีการทำงานที่เชื่อมโยงกับ Page function อื่น นอกจากนั้นยังสามารถกำหนด path ให้เป็น dynamic ได้  ซึ่งสองตัวนี้จะต้องทำงานร่วมกัน
@@ -188,13 +204,14 @@ return  function () {
 
 --- 
 ### การใช้ `title`
-- เพราะเป็นการเขียนในรูปแบบ Page function ที่จะทำงานบน index.php เท่านั้น จึงทำให้การกำหนด title ไม่สามารถทำได้แบบปกติ ซึ่ง title ตัวนี้เป็นฟังค์ชั่นที่จะรับค่า string ที่เป็น ข้อความ title และ  `return` ค่าออกมาเป็น `string` ที่เป็น โค้ด JavaScript ซึ่งต้องทำการต่อ string เข้ากับ โค้ด html  ตัวอย่าง โค้ด
+- เพราะเป็นการเขียนในรูปแบบ Page function ที่จะทำงานบน index.php เท่านั้น จึงทำให้การกำหนด title ไม่สามารถทำได้แบบปกติ
+- ในเวอร์ชั่นนี้ได้ทำการปรับปรุงทำให้สามารถใช้ `title();` โดยไม่ต้องทำการต่อ string แต่สามารถเรียกใช้เดี่ยวๆ ได้ และไม่ได้ใช้ `javascript` ในการเปลี่ยน title
 ```php
 <?php
 return  function () {
 	[$wisit_router] =  module('wisit-router')
-	return  $wisit_router->title('Home') .
-		<<<HTML
+	$wisit_router->title('Home');
+	return <<<HTML
 			<div>
 				<div>This is Home Page</div>
 			</div>
@@ -207,7 +224,7 @@ return  function () {
 
 ```php
 <?php
-eval(file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/installer/Release2-0.txt'));
+eval(file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/installer/Release2-1.txt'));
 ```
 
 - สามารถใช้โค้ดด้านบนหรือด้านล่างก็ได้ เลือกอันใดอันหนึ่ง
@@ -215,11 +232,11 @@ eval(file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/ins
 
 ```php
 <?php
-$module  =  file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/installer/Release2-0.php');
+$module  =  file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/installer/Release2-1.php');
 file_put_contents('index.php', $module);
 header('Location: /');
 ```
 
  - วิธีที่ 2  **ติดตั้งผ่าน git** ใช้คำสั่ง git clone เพื่อดาวน์โหลด template  `git clone https://github.com/Arikato111/PHP_SPA.git`  หลังจากนั้นจะได้โฟลเดอร์  **PHP_SPA**  มา ให้ย้ายไฟล์ทั้งหมดในโฟลเดอร์นั้นไปยัง htdocs ( ในกรณีใช้ Xampp ) โดยไม่ต้องสร้างโฟลเดอร์เพิ่มใน htdocs และใช้งานตามปกติ อย่าลืมเช็ค branch ว่าตรงกับที่ต้องการไหม หากไม่ก็ทำการเปลี่ยน branch
  
-- วิธีที่ 3 **ติดตั้งผ่าน zip file** ดาวน์โหลด zip file click  [ดาวน์โหลด](https://github.com/Arikato111/PHP_SPA/archive/refs/heads/Release2.0.zip)  จากนั้นจะได้ไฟล๋  **PHP_SPA-Release2.0.zip**  ในไฟล์ zip จะมีโฟลเดอร์ชื่อเดียวกันอยู่ ให้แตกไฟล์นำโฟลเดอร์นั้นออกมา แล้วเข้าไปยังโฟลเดอร์นั้น ย้ายไฟล์ทั้งหมดไปที่ htdocs ( ในกรณีใช้ Xampp ) โดยไม่ต้องสร้างโฟลเดอร๋เพิ่มใน htdocs และใช้งานตามปกติ
+- วิธีที่ 3 **ติดตั้งผ่าน zip file** ดาวน์โหลด zip file click  [ดาวน์โหลด](https://github.com/Arikato111/PHP_SPA/archive/refs/heads/Release2.1.zip)  จากนั้นจะได้ไฟล๋  **PHP_SPA-Release2.0.zip**  ในไฟล์ zip จะมีโฟลเดอร์ชื่อเดียวกันอยู่ ให้แตกไฟล์นำโฟลเดอร์นั้นออกมา แล้วเข้าไปยังโฟลเดอร์นั้น ย้ายไฟล์ทั้งหมดไปที่ htdocs ( ในกรณีใช้ Xampp ) โดยไม่ต้องสร้างโฟลเดอร๋เพิ่มใน htdocs และใช้งานตามปกติ
