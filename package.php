@@ -1,4 +1,5 @@
 <?php
 // import page or others file at only here //
-import('./src/*');
+module('wisit-router'); // <-- use 'module' for require modules
+import('./src/*'); // <-- use 'import' to require file page
 ?>

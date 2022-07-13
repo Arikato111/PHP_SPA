@@ -1,9 +1,7 @@
-<?php
-session_start();
-// Don't Delete or Change
-require('./modules/wisit-single-page.php');
-require("./package.php");
-?>
+<?php $GLOBALS['title'] = 'title';
+require('./modules/module-import/main.m.php');
+require('./package.php');
+$Content = Main(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,16 +9,13 @@ require("./package.php");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>title</title>
-    <link rel="stylesheet" href="/static/style.css"> 
-    <!-- do not use ./style.css or style.css, only use /style.css -->
+    <title><?php echo $GLOBALS['title']; ?></title>
+    <link rel="stylesheet" href="/static/style.css"> <!-- do not use ./style.css or style.css, only use /style.css -->
 </head>
 
 <body>
-    <div>
-        <?php echo RootContent(); ?>
-    </div>
-    <script src="/static/script.js"></script>
+    <div> <?php echo $Content; ?> </div>
+    <script src="/static/script.js"></script> <!-- do not use ./script.js or script.js, only use /script.js -->
 </body>
 
 </html>
