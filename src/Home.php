@@ -1,12 +1,12 @@
 <?php
-return function () { // it has no function's name , It will return to variable when got require
-    ['title' => $title] = require('./modules/wisit-router/main.m.php'); // import module as function
+$title = import('wisit-router/title');
 
+$Home = function () use ($title) { 
     $title('Home'); // use title function to change title
     return <<<HTML
         <div class="content">
             <!-- Style link  -->
-            <link rel="stylesheet" href="/src/home.css">
+            <link rel="stylesheet" href="/static/home.css">
 
             <!-- Content  -->
             <div class="box">
@@ -30,3 +30,5 @@ return function () { // it has no function's name , It will return to variable w
         </div>
         HTML;
 };
+
+export: $Home;
