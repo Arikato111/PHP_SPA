@@ -8,33 +8,21 @@ function import($dir)
 {
     try {
         if (strpos($dir, './') !== false) {
-            if (!file_exists($dir . '.php')) {
-                throw new ParseError();
-            }
-            $data = substr(file_get_contents($dir . '.php'), 6);
-            $run = <<<PHP
-            return (function(){
-                $data
+            $comp= (function() use ($dir){
+                require($dir . '.php');
+                return $export;
             })();
-            PHP;
-            $run = str_replace('export:', 'return', $run);
-            return eval($run);
+            return $comp;
+
         } elseif (strpos($dir, '/') !== false) {
-            if (!file_exists('./modules/' . $dir . '.php')) {
-              return throw new ParseError();
-            }
             return require('./modules/' . $dir . '.php');
 
         } else {
-            if (!file_exists('./modules/' . $dir . '/main.m.php')) {
-                return throw new ParseError();
-            }
             return require('./modules/' . $dir . '/main.m.php');
         }
-    } catch (ParseError $err) {
+    } catch (Error $err) {
         $message = 'can not import from ( \'' . $dir . '\' ) |  Please check your directory';
         echo 'ERROR ! import : ' . $message;
-        // echo '<br>' ;
         $err= explode('#', $err);
         echo '<br>';
         echo $err= $err[sizeof($err)-2];
@@ -52,6 +40,5 @@ function import($dir)
             }
         }
         echo 'Please check at ' . $error . '.php';
-        die;
     }
 }

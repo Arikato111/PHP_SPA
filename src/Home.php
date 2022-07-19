@@ -1,5 +1,5 @@
 <?php
-$title = import('wisit-router/title');
+$title = import('./wisit-router/title');
 
 $Home = function () use ($title) {
   $title('Home'); // use title function to change title
@@ -39,4 +39,4 @@ $Home = function () use ($title) {
     HTML;
 };
 
-export: $Home;
+$export = $Home;
