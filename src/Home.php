@@ -1,6 +1,5 @@
 <?php
-$title = import('/wisit-router/title');
-
+$title = import('wisit-router/title');
 $Home = function () use ($title) { 
     $title('Home'); // use title function to change title
     return <<<HTML
