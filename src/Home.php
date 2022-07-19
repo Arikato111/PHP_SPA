@@ -39,5 +39,4 @@ $Home = function () use ($title) {
     HTML;
 };
 
-export:
-$Home;
+export: $Home;
