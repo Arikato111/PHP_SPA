@@ -58,9 +58,10 @@ export: $Home;
 - `$title = import('wisit-router/title');`
   - ส่วนแรกคือการ `import` module  เข้ามาใช้งาน ซึ่งจะอธิบายโดยละเอียดในหัวข้อ `import`
 - `$Home` และ `use` 
-  - อย่างที่ได้กล่าวไปว่าเป็นการเขียนในรูปแบบฟังค์ชั่น `$Home` ก็เป็นฟังค์ชั่นๆ หนึ่งที่จะ return ค่าไปแสดงผลเป็น HTML โดยมีการใช้ `export` ซึ่งนอกจากฟังค์ชั่น $Home แล้วก็สามารถสร้างฟังค์ชั่นอื่นๆ มาทำงานร่วมกันได้แต่อย่างไรก็ตาม จะ `export` ได้เพียงฟังค์ชั่นเดียว 
+  - อย่างที่ได้กล่าวไปว่าเป็นการเขียนในรูปแบบฟังค์ชั่น และ `$Home` ก็เป็นฟังค์ชั่นๆ หนึ่งที่จะ return ค่าไปแสดงผลเป็น HTML โดยมีการใช้ `export` เพื่อส่งค่าต่อไปเมื่อถูก import ซึ่งนอกจากฟังค์ชั่น $Home แล้วก็สามารถสร้างฟังค์ชั่นอื่นๆ มาทำงานร่วมกันได้แต่อย่างไรก็ตาม จะ `export` ได้เพียงฟังค์ชั่นเดียว 
   - เมื่อมีพังค์ชั่นอื่นหรือ modules อื่นที่ import เข้ามาแล้วต้องการให้มาทำงานภายในฟังค์ชั่นที่ต้องการ สามารถใช้ `use ()` ได้ และใส่ตัวแปรที่ต้องการให้ทำงานภายในฟังค์ชั่นลงไป
   - **ข้อควรระวังสำหรับการสร้างฟังค์ชั่น ไม่ควรประกาศฟังค์ชั่นที่เป็นสถานะ Global ( ฟังค์ชั่นตามแบบปกติ) แนะนำให้ประกาศลงในตัวแปรเท่านั้น เพื่อป้องกัน error ในกรณีมีการ import ซ้ำ
+  - `export` เพื่อจะทำงานร่วมกับไฟล์หรือฟังค์ชั่นอื่นๆ การ export มีไว้เพื่อส่งค่าๆ นั้นออกไป เมื่อถูก import  เช่นในตัวอย่างที่มีการ `export: $Home;` คือการส่ง $Home 
 ### import
 - เพื่อให้สามารถเขียนหน้าเว็บในรูปแบบฟังค์ชั่น ควรใช้ `import` แทนการ `require` ซึ่งจะมีตัวอย่างและวิธีใช้กับประเภทไฟล์ต่างๆ ดังนี้
 #### การ import modules
@@ -109,36 +110,37 @@ $HomePage = import('./src/Home');
 ```
 - ตัวแปรที่มารับค่าคือ `$wisit-router` ซึ่งต้องเขียนภายใน [ ]
 
-#### **2 . การ `import` เฉพาะ `function` ที่ต้องการ** ซึ่งจะมีการ `import` ไม่ต่างจากข้อ 1 แต่มีสิ่งที่ต่างออกไปก็คือ รูปแบบการเขียนและตัวแปรมารับค่า ที่จะเขียนแบบนี้ `['name'=>$func]` โดย `name` คือชื่อฟังค์ชั่นที่ต้องการ และ `$func` คือตัวแปรที่มารับค่า ยกตัวอย่างเช่น
+#### **2 . การ `import` เฉพาะ `function` ที่ต้องการ** ซึ่งจะมีการ `import` ไม่ต่างจากข้อ 1 แต่มีสิ่งที่ต่างออกไปก็คือ รูปแบบการเขียนและตัวแปรมารับค่า ที่จะเขียนแบบนี้ `['name'=>$func]` โดย `name` คือชื่อฟังค์ชั่นที่ต้องการ และ `$func` คือตัวแปรที่มารับค่า และจะมี type เป็น function ยกตัวอย่างเช่น
 ```php
-['SwitchPath' => $SwitchPath, 'Route' => $Route] = module('wisit-router');
+['SwitchPath' => $SwitchPath, 'Route' => $Route] = import('wisit-router');
 ```
 
-- **3 . การ `require` แบบปกติ** ซึ่งจะ `require` เฉพาะฟังค์ชั่นที่ต้องการ ซึ่งในโฟลเดอร์ของ `module` นั้นจะมีการเขียน `function` แยกเป็นไฟล์ๆ ซึ่งสามารถทำการ `require` จากไฟล์นั้นๆ ได้เลย เช่น
+#### **3 . การ `import` แบบปกติ** ซึ่งจะ `import` เฉพาะฟังค์ชั่นที่ต้องการ ซึ่งในโฟลเดอร์ของ `module` นั้นจะมีการเขียน `function` แยกเป็นไฟล์ๆ ซึ่งสามารถทำการ `require` จากไฟล์นั้นๆ ได้เลย เช่น
 
 ```php
-$getPath = require('./modules/wisit-router/getPath.php');
+$getPath = import('wisit-router/getPath');
 ```
-- สังเกตุว่าไฟล์ที่ `require` มานั้นจะไม่ใช่ `main.m.php` ตามปกติ ซึ่งในที่นี้เป็น `getPath.php` คือ `getPath function` นั่นเอง และตัวแปรที่มารับค่านั้นก็สร้างตามปกติได้เลย
-- ข้อควรระวังคือ วิธีนี้จะไม่สามารถใช้ `module()` ในการ `require` ได้ 
+- สังเกตุว่าที่ระบุลงใน `import` มานั้นจะไม่ใช่เพียงชื่อของ module เพียงเท่านั้น และตัวแปรที่มารับค่านั้นก็สร้างตามปกติได้เลย
+- ข้อควรระวังคือ ไม่ต้องใส่ นามสกุลของไฟล์ (อ่านวิธี import เพิ่มเติมที่หัวข้อ **import** )
 
 ---
 ### การใช้ `SwitchPath` และ `Route`
 - `SwitchPath` และ `Route` จะเป็นตัวที่ทำให้สามารถกำหนด path ได้อย่างอิสระและมีการทำงานที่เชื่อมโยงกับ Page function อื่น นอกจากนั้นยังสามารถกำหนด path ให้เป็น dynamic ได้  ซึ่งสองตัวนี้จะต้องทำงานร่วมกัน
 ```php
 <?php
-return  function () {
-	['SwitchPath' => $SwitchPath, 'Route' => $Route] =  module('wisit-router');
-	$HomePage  =  require('./src/Home.php');
-	$Tutorial  =  require('./src/Tutorial.php');
-	
-	return  $SwitchPath(
-		$Route('/tutorial/:', fn () => $Tutorial()),
-		$Route('/tutorial', fn () => $Tutorial()),
-		$Route('/', fn () => $HomePage()),
-		$Route('*', fn () => 'Not found page'),
-	);
+session_start();
+['SwitchPath' => $SwitchPath, 'Route' => $Route] = import('wisit-router');
+
+$HomePage = import('./src/Home');
+
+$Main = function () use ($SwitchPath, $Route, $HomePage) {
+    return $SwitchPath(
+        $Route('/', fn () => $HomePage()), 
+        $Route('*', fn () => 'Not found page'),
+    );
 };
+
+export: $Main;
 ```
 - Route จะเป็น function ที่จะรับค่า path และ callback function ที่จะ `return` เป็น Page function  หาก path ที่ user เข้ามาตรงกับที่กำหนดไว้ก็จะทำการ `return` Page function นั้นๆ ออกไป 
 ในการกำหนด path หากต้องการให้ path ตำแหน่งนั้นๆ เป็นแบบ dynamic หรือก็คือการอนุญาตให้ path ในตำแหน่งนั้นๆ เป็นค่าอะไรก็ได้ ก็ให้ใส่ `:` ลงในตำแหน่งนั้น ตามโค้ดตัวอย่าง
@@ -151,48 +153,56 @@ return  function () {
 - SwitchPath จะเป็นตัวที่คอยรับ Route ไว้ หากว่า การเช็ค path ของ Route นั้นตรง ตัว Route ก็จะส่งค่ามาให้ SwitchPath และทำการสั่ง run callback function ที่มีการใส่ลงใน Route และจะได้มาเป็น เนื้อหา html ของ Page function นั้นๆ และ SwithPath จะ `return` ต่อไปในรูปแบบของ `string` ซึ่งสามารถนำไปต่อ string เข้ากับโค้ด html อื่นๆ ต่อได้อีก
 ---
 ### การใช้ `getParams`
-- getParams คือตัวที่จะดึง path ในตำแหน่งสุดท้ายมา เช่น `/home/view`  getParams ก็จะ `return` view มา แต่ว่าหากไม่อยากได้ตำแหน่งสุดท้าย ก็สามารถระบุตำแหน่งลงใน function ได้ โดยเริ่มนับจากตำแหน่งที่ 0
+- getParams คือตัวที่จะดึง path ในตำแหน่งสุดท้ายมา เช่น `domain.com/home/view`  getParams ก็จะ return `view` มา แต่ว่าหากไม่อยากได้ตำแหน่งสุดท้าย ก็สามารถระบุตำแหน่งลงใน function ได้ โดยเริ่มนับจากตำแหน่งที่ 0
+
 ตัวอย่างโค้ด
 ```php
 <?php
-return  function () {
-	[$wisit_router] =  module('wisit-router')
-	$params  =  $wisit_router->getParams();
-	return  $wisit_router->title('title') .
-		<<<HTML
-			<div>
-				<div>hello world</div>
-				{$params}
-			</div>
+[$wisit_router] = import('wisit-router');
+
+$Home = function () use ($wisit_router) {
+  $params  =  $wisit_router->getParams();
+  $wisit_router->title('Home');
+
+  return <<<HTML
+		<div>
+			<div>hello world</div>
+			{$params}
+		</div>
 		HTML;
 };
+
+export: $Home;
 ```
 ---
 ### การใช้ `getPath`
 - getPath นั้นหลักการทำงานคล้ายคลึงกับ getParams โดยที่ getParams จะได้มาเพียง path ตำแหน่งใดตำแหน่งหนึ่งเท่านั้น แต่ getPath จะได้มาทุกตำแหน่ง หรือก็คือได้ path แบบเต็มมาใช้งานนั่นเอง ซึ่งการใช้งานก็จะเหมือนกับ getParams เลย
 ```php
 <?php
-return  function () {
-	[$wisit_router] =  module('wisit-router')
+[$wisit_router] =  import('wisit-router');
+
+$Home = function () use ($wisit_router) {
 	$path  =  $wisit_router->getPath();
-	return  $wisit_router->title('title') .
-		<<<HTML
-			<div>
-				<div>hello world</div>
-				{$path}
-			</div>
+  $wisit_router->title('Home');
+	return <<<HTML
+		<div>
+			<div>hello world</div>
+			{$path}
+		</div>
 		HTML;
 };
+
+export: $Home;
 ```
 
 --- 
 ### การใช้ `title`
 - เพราะเป็นการเขียนในรูปแบบ Page function ที่จะทำงานบน index.php เท่านั้น จึงทำให้การกำหนด title ไม่สามารถทำได้แบบปกติ
-- ในเวอร์ชั่นนี้ได้ทำการปรับปรุงทำให้สามารถใช้ `title();` โดยไม่ต้องทำการต่อ string แต่สามารถเรียกใช้เดี่ยวๆ ได้ และไม่ได้ใช้ `javascript` ในการเปลี่ยน title
 ```php
 <?php
-return  function () {
-	[$wisit_router] =  module('wisit-router')
+[$wisit_router] =  import('wisit-router');
+
+$Home = function () use ($wisit_router) {
 	$wisit_router->title('Home');
 	return <<<HTML
 			<div>
@@ -200,6 +210,8 @@ return  function () {
 			</div>
 		HTML;
 };
+
+export: $Home;
 ```
 ---
 ### ติดตั้ง
@@ -222,4 +234,4 @@ header('Location: /');
 
  - วิธีที่ 2  **ติดตั้งผ่าน git** ใช้คำสั่ง git clone เพื่อดาวน์โหลด template  `git clone https://github.com/Arikato111/PHP_SPA.git`  หลังจากนั้นจะได้โฟลเดอร์  **PHP_SPA**  มา ให้ย้ายไฟล์ทั้งหมดในโฟลเดอร์นั้นไปยัง htdocs ( ในกรณีใช้ Xampp ) โดยไม่ต้องสร้างโฟลเดอร์เพิ่มใน htdocs และใช้งานตามปกติ อย่าลืมเช็ค branch ว่าตรงกับที่ต้องการไหม หากไม่ก็ทำการเปลี่ยน branch
  
-- วิธีที่ 3 **ติดตั้งผ่าน zip file** ดาวน์โหลด zip file click  [ดาวน์โหลด](https://github.com/Arikato111/PHP_SPA/archive/refs/heads/Release2.1.zip)  จากนั้นจะได้ไฟล๋  **PHP_SPA-Release2.0.zip**  ในไฟล์ zip จะมีโฟลเดอร์ชื่อเดียวกันอยู่ ให้แตกไฟล์นำโฟลเดอร์นั้นออกมา แล้วเข้าไปยังโฟลเดอร์นั้น ย้ายไฟล์ทั้งหมดไปที่ htdocs ( ในกรณีใช้ Xampp ) โดยไม่ต้องสร้างโฟลเดอร๋เพิ่มใน htdocs และใช้งานตามปกติ
+- วิธีที่ 3 **ติดตั้งผ่าน zip file** ดาวน์โหลด zip file click  [ดาวน์โหลด](https://github.com/Arikato111/PHP_SPA/archive/refs/heads/Release3.0.zip)  จากนั้นจะได้ไฟล๋  **PHP_SPA-Release3.0.zip**  ในไฟล์ zip จะมีโฟลเดอร์ชื่อเดียวกันอยู่ ให้แตกไฟล์นำโฟลเดอร์นั้นออกมา แล้วเข้าไปยังโฟลเดอร์นั้น ย้ายไฟล์ทั้งหมดไปที่ htdocs ( ในกรณีใช้ Xampp ) โดยไม่ต้องสร้างโฟลเดอร๋เพิ่มใน htdocs และใช้งานตามปกติ
