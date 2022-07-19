@@ -6,7 +6,7 @@ $Home = function () use ($title) {
   return <<<HTML
     <div class="content">
       <!-- Style link  -->
-      <link rel="stylesheet" href="/static/home.css">
+      <link rel="stylesheet" href="/public/home.css">
 
       <!-- Content  -->
       <div class="box">
@@ -23,7 +23,14 @@ $Home = function () use ($title) {
             <li>import</li>
           </ul>
         </div>
-        <div class="subtitle">And most importantly, use <b>import</b> to require file or module</div>
+        <div class="subtitle">And most importantly, use 
+          <a href="https://github.com/Arikato111/PHP_SPA/tree/Release3.0#import"
+          style="text-decoration: none;color:black;"
+          target="_blank"
+          >
+            <b>import</b>
+          </a>
+          to require file or module</div>
         <div> writing page as function</div>
         <div style="font-size: 18px;">You will find style.css and script.js in static folder.</div>
         <h4 class="contact">Read more at <a class="hove" target="_blank" href="https://github.com/Arikato111/PHP_SPA">Github</a></h4>
@@ -32,4 +39,5 @@ $Home = function () use ($title) {
     HTML;
 };
 
-export: $Home;
+export:
+$Home;
