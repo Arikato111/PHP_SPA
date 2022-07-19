@@ -228,7 +228,7 @@ return  function () {
 
 ```php
 <?php
-eval(file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/installer/Release2-1.txt'));
+eval(file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/installer/Release3-0.txt'));
 ```
 
 - สามารถใช้โค้ดด้านบนหรือด้านล่างก็ได้ เลือกอันใดอันหนึ่ง
@@ -236,7 +236,7 @@ eval(file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/ins
 
 ```php
 <?php
-$module  =  file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/installer/Release2-1.php');
+$module  =  file_get_contents('https://raw.githubusercontent.com/Arikato111/PHP_SPA/installer/Release3-0.php');
 file_put_contents('index.php', $module);
 header('Location: /');
 ```
