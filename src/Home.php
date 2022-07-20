@@ -17,7 +17,7 @@ $Home = function () use ($title) {
         <h1 align="center">Welcome to PHP_SPA 3.0</h1>
         <h2 align="center">
           Read more at 
-          <a href="https://github.com/Arikato111/PHP_SPA">Github</a>
+          <a target="_blank" href="https://github.com/Arikato111/PHP_SPA">Github</a>
         </h2>
       </div>
     </div>
