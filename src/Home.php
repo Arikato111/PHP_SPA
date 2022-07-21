@@ -15,10 +15,11 @@ $Home = function () use ($title) {
           <div class="triangle fixed"></div>
         </div>
         <h1 align="center">Welcome to PHP_SPA 3.0</h1>
-        <h2 align="center">
+        <h2>Get started by editing src/Home.php</h2>
+        <h3 align="center">
           Read more at 
           <a target="_blank" href="https://github.com/Arikato111/PHP_SPA">Github</a>
-        </h2>
+        </h3>
       </div>
     </div>
     HTML;
