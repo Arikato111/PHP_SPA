@@ -7,38 +7,53 @@
 function import($dir)
 {
     try {
-        if (strpos($dir, './') !== false) {
-            $comp= (function() use ($dir){
+        if (strpos($dir, '.css')) {
+            if(!in_array($dir, $GLOBALS['style'])) {
+                array_push($GLOBALS['style'], $dir);
+            }
+        } elseif (strpos($dir, './') !== false) {
+            $comp = (function () use ($dir) {
                 require($dir . '.php');
                 return $export;
             })();
             return $comp;
-
         } elseif (strpos($dir, '/') !== false) {
             return require('./modules/' . $dir . '.php');
-
         } else {
             return require('./modules/' . $dir . '/main.m.php');
         }
     } catch (Error $err) {
         $message = 'can not import from ( \'' . $dir . '\' ) |  Please check your directory';
         echo 'ERROR ! import : ' . $message;
-        $err= explode('#', $err);
+        $err = explode('#', $err);
         echo '<br>';
-        echo $err= $err[sizeof($err)-2];
+        echo $err = $err[sizeof($err) - 2];
         echo '<br>';
         $state = false;
         $error = '';
         $str_len = strlen($err);
-        for($i = 0;$i <$str_len; $i ++){
-            if($err[$i] == "'" && !$state){
+        for ($i = 0; $i < $str_len; $i++) {
+            if ($err[$i] == "'" && !$state) {
                 $state = !$state;
-            } elseif($err[$i] == "'" && $state){
+            } elseif ($err[$i] == "'" && $state) {
                 break;
-            } elseif($state){
+            } elseif ($state) {
                 $error .= $err[$i];
             }
         }
         echo 'Please check at ' . $error . '.php';
     }
 }
+
+$GLOBALS['title'] = 'title';
+$GLOBALS['style'] = [];
+$showStyle = function () {
+    if (sizeof($GLOBALS['style']) > 0) {
+        $sss = '<style>';
+        foreach ($GLOBALS['style'] as $s) {
+            $sss .= file_get_contents($s);
+        }
+        $sss .= '</style>' . PHP_EOL;
+    }
+    echo $sss;
+};

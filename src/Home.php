@@ -1,14 +1,11 @@
 <?php
 $title = import('wisit-router/title');
+import('./src/home.css');
 
 $Home = function () use ($title) {
   $title('Home'); // use title function to change title
   return <<<HTML
     <div class="content">
-      <!-- Style link  -->
-      <link rel="stylesheet" href="/public/home.css">
-
-      <!-- Content  -->
       <div>
         <div class="box">
           <div class="triangle"></div>
