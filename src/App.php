@@ -1,9 +1,10 @@
 <?php
-$title = import('wisit-router/title');
-import('./src/home.css');
+$title = import('preact/title');
+import('./src/app.css');
 
-$Home = function () use ($title) {
-  $title('Home'); // use title function to change title
+$App = function () use ($title) {
+  $title('Home'); 
+
   return <<<HTML
     <div class="content">
       <div>
@@ -22,4 +23,4 @@ $Home = function () use ($title) {
     HTML;
 };
 
-$export = $Home;
+$export = $App;

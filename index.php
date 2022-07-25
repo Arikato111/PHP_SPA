@@ -1,7 +1,6 @@
 <?php 
 require('./modules/use-import/main.m.php');
-$Main = import('./src/Main');
-$Content = $Main(); ?>
+$Main = import('./src/Main'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +14,7 @@ $Content = $Main(); ?>
 </head>
 
 <body>
-    <div> <?php echo $Content; ?> </div>
+    <?php echo $Main->root; ?>
     <script src="/public/script.js"></script>
 </body>
 
