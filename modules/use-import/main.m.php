@@ -54,6 +54,6 @@ $showStyle = function () {
             $sss .= file_get_contents($s);
         }
         $sss .= '</style>' . PHP_EOL;
+        echo $sss;
     }
-    echo $sss;
 };
