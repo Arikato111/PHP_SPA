@@ -16,7 +16,7 @@ function import($dir, $fileDir = false)
             } elseif (strpos($dir, '.php') !== false) {
                 $comp = (function () use ($dir) {
                     require($dir);
-                    return $export;
+                    if ($export ?? false) return $export;
                 })();
                 return $comp;
             }
@@ -28,7 +28,7 @@ function import($dir, $fileDir = false)
             } elseif (strpos($dir, './') !== false) {
                 $comp = (function () use ($dir) {
                     require($dir . '.php');
-                    return $export;
+                    if ($export ?? false) return $export;
                 })();
                 return $comp;
             } elseif (strpos($dir, '/') !== false) {
@@ -61,7 +61,8 @@ function import($dir, $fileDir = false)
 }
 
 $GLOBALS['style'] = [];
-$showStyle = function () {
+function showStyles()
+{
     if (sizeof($GLOBALS['style']) > 0) {
         $sss = '<style>';
         foreach ($GLOBALS['style'] as $s) {
