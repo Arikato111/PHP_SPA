@@ -12,7 +12,7 @@ $Content = $Main(); ?>
     <link rel="icon" href="/public/icon.svg" type="image/svg">
     <title><?php echo $GLOBALS['title'] ?? 'title'; ?></title>
     <link rel="stylesheet" href="/public/style.css">
-    <?php showStyles(); ?>
+    <?php echo showStyles(); ?>
 </head>
 
 <body>

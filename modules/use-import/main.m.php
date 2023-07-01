@@ -69,6 +69,6 @@ function showStyles()
             $sss .= file_get_contents($s);
         }
         $sss .= '</style>' . PHP_EOL;
-        echo $sss;
+        return $sss;
     }
 };
